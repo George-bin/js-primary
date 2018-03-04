@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        body * {
+        	padding: 0;
+        	margin: 0;
+        	font-size: 13px;
+        }
+        ul,li {
+        	list-style: none;
+        }
+        img {
+        	border: 0;
+        	vertical-align:top;
+        }
+        .clearfix { zoom: 1; }
+        .clearfix:after {
+        	display: block;
+        	content: "";
+        	clear: both;
+        	height: 0;
+        	overflow: hidden;
+        }
+        a { text-decoration: none; }
+        /*li {
+        	cursor: pointer;
+        }*/
+        #wrap {
+        	width: 850px;
+        	margin: 40px auto;
+        	border: 1px solid #a7a7a7;
+        	background: #e6e6e6;
+        }
+        .left {
+        	float: left;
+        	width: 150px;
+        }
+        .left li {
+        	height: 89px;
+        	padding-top: 10px;
+        	text-align: center;
+        	cursor: pointer;
+        }
+        .left li+li {
+        	border-top: 1px solid #a7a7a7;
+        }
+        .left img{ 
+        	width:40px; 
+        	height:40px; 
+        } 
+        .left span{
+        	float:left; 
+        	width:148px; 
+        	margin-top:7px; 
+        	color:#2a2a2a; 
+        	font-size:14px;
+        }
+        .left .active{ background: #fefefe; }
+        .right{ 
+        	position:relative;
+        	width:700px; 
+        	float:right;
+        }
+        .right img {
+        	width: 700px;
+        	height: 400px;
+        }
+        .right .tab{
+        	position:absolute; 
+        	left:0; 
+        	bottom:0; 
+        	display:none;
+        }
+        .tab li{ 
+        	float:left; 
+        	opacity: .6;
+        } 
+        .tab li:hover {
+        	opacity: .8;
+        }
+        .tab li+li {
+        	margin-left: 2px; 
+        }
+        .tab li a{
+        	float:left;
+        	height:30px; 
+        	line-height:30px; 
+        	font-size:12px; 
+        	text-align:center; 
+        	background:#5a5a52; 
+        } 
+        .tabs1 a{ width:232px; }  
+        .tabs2 a{ width:173.5px; }  
+        .tabs3 a{ width:115px; }  
+        .tabs4 a{ width:173.5px; }  
+        .tab .active{ background:#ef3263; }  
+        .tab li a{color:#fdf0f3;}  
+	</style>
+</head>
+<body>
+	<div id="wrap" class="clearfix">
+       <ul class="left">
+       	<li class="active">
+       	  <a href="#">
+             <img src="images/ou.png" alt="icon" />
+             <span>欧美风</span>
+       	  </a>
+       	</li>
+       	<li class="one">
+       	  <a href="#">
+             <img src="images/zhong.png" alt="icon" />
+             <span>中国风</span>
+       	  </a>
+       	</li>
+       	<li class="one">
+       	  <a href="#">
+             <img src="images/feng.png" alt="icon" />
+             <span>风景</span>
+       	  </a>
+       	</li>
+       	<li class="one">
+       	  <a href="#">
+             <img src="images/ming.png" alt="icon" />
+             <span>名胜古迹</span>
+       	  </a>
+             
+       	</li>
+       </ul>
+       <div class="right">
+            <img src="images/doing.gif" alt="图片" />
+            <ul class="tab tabs1" style="display: block;">
+               <li><a href="#" class="active">雅诗兰黛完美修护唇膏(蓝色花纹管管体</a></li>
+               <li><a href="#">雅诗兰黛花样唇膏</a></li>
+               <li><a href="#">倩碧卓越润肤乳</a></li>
+            </ul>
+            <ul class="tab tabs2">
+               <li><a href="#" class="active">肌研满150减30</a></li>
+               <li><a href="#">高性价比低单价商品2.8折起</a></li>
+               <li><a href="#">贝德玛满228送128</a></li>
+               <li><a href="#">吃出健康美态2.8折起</a></li>
+            </ul>
+            <ul class="tab tabs3">
+             	<li><a href="#" class="active">艾格利克全场1.5折起</a></li>
+             	<li><a href="#">NO1dora全场1.4折起</a></li>
+             	<li><a href="#">伊米妮全场1折起</a></li>
+             	<li><a href="#">小熊电器全场1折起</a></li>
+             	<li><a href="#">贝缇卡全场1折起</a></li>
+             	<li><a href="#">倩碧卓越润肤乳</a></li>
+            </ul>
+            <ul class="tab tabs4 ">
+             	<li><a href="#" class="active">万达歌星2小时欢唱券</a></li>
+             	<li><a href="#">Free派-高丝娜蔻眼霜</a></li>
+             	<li><a href="#">财付通下单立减 还抽单反</a></li>
+             	<li><a href="#">Free派-芙优润天蚕丝面膜</a></li>
+            </ul>
+       </div>
+	</div>
+	<script>
+        var oWrap = document.getElementById('wrap');
+        var oUlLeft = oWrap.getElementsByTagName('ul')[0];
+        var aLiLeft = oUlLeft.getElementsByTagName('li');
+        var oDivRight = oWrap.getElementsByTagName('div')[0];
+        var aUlTab = oDivRight.getElementsByTagName('ul');
+        var oImg = oDivRight.getElementsByTagName('img')[0];
+        var Url = [['images/1-1.png','images/1-2.png','images/1-3.png'],['images/2-1.png','images/2-2.png','images/2-3.png','images/2-4.png'],['images/3-1.png','images/3-2.png','images/3-3.png','images/3-4.png','images/3-5.png','images/3-6.png'],['images/4-1.png','images/4-2.png','images/4-3.png','images/4-4.png']];
+        var num = 0;
+
+        //左侧选项卡切换
+        for(var i=0,len=aLiLeft.length;i<len;i++) {
+        	aLiLeft[i].index = i;
+        	aLiLeft[i].onmouseover = function() {
+        		for(var i=0,len=aLiLeft.length;i<len;i++) {
+        			aLiLeft[i].className = '';
+        			aUlTab[i].style.display = 'none';
+        		}
+        		this.className = 'active';
+        		aUlTab[this.index].style.display = 'block';
+        		num = this.index;
+        		oImg.src = Url[this.index][0];
+        		// oImg.src = 'images/'+(num+1)+'-1.png';
+          	};
+        }
+        // 右侧图片选项卡切换
+        function tabPic(oUlTab) {
+        	var aA = oUlTab.getElementsByTagName('a');
+        	for(var i=0,len=aA.length;i<len;i++) {
+        		aA[i].index = i;
+        		aA[i].onmouseover = function() {
+        			for(var i=0,len=aA.length;i<len;i++) {
+        				aA[i].className = '';
+        			}
+        			this.className = 'active';
+        			oImg.src = Url[num][this.index];
+        			// oImg.src = 'images/' + (num+1) + '-' + (this.index + 1) + '.png';  
+        		}
+
+        	}
+        }
+        // 函数调用  
+        for(var i=0; i<aUlTab.length; i++){  
+            tabPic(aUlTab[i]);  
+        } 
+
+	</script>
+	</body>
+</html>

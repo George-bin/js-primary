@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	 <input type="button" value="按钮1" />
+	 <input type="button" value="按钮2" />
+	 <input type="button" value="按钮3" />
+	 <script>
+        var oBtn = document.getElementsByTagName('input');
+        var that = null;
+        for(var i=0;i<oBtn.length;i++) {
+        	oBtn[i].onclick = fn1;
+        	// oBtn[i].onclick = function() {
+        	// 	that = this;
+        	// 	fn1();
+        	// }
+        }
+        function fn1() {
+        	// this;
+        	// that.style.backgroundColor = 'yellow';
+        	this.style.backgroundColor = 'yellow';
+        }
+	 </script>
+
+</body>
+</html>

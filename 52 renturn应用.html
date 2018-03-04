@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	   alert(fn(2,6));
+	   alert(fn(7,3));
+       function fn(n,m) {
+       	  var arr = [];
+       	  if(n<m) {
+       	  	 for(var i=n;i<=m;i++) {
+                arr.push(i);
+       	  	 }
+       	  }else if(n>m){
+       	     for(var i=m;i<=n;i++) {
+                arr.push(i);
+       	  	 }
+       	  }
+       	  return arr;
+       }
+	</script>
+</body>
+</html>

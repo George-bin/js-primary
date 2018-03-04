@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+        var str = 'www.miaov.com/mimi';
+
+        var positions = [],
+            pos = 0;
+
+        // while(pos > -1) {
+
+        // 	positions.push(pos);
+
+        // 	pos = str.lastIndexOf('w', pos-1);
+
+        // }
+        for(; str.lastIndexOf('w', pos) != -1; ) {
+
+        	alert(str.indexOf('w', pos));
+
+        	pos = str.indexOf('w', pos) - 1;
+        }
+	</script>
+</body>
+</html>

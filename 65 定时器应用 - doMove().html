@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+    <script src="js/JS.js"></script>
+	<script>
+       var str = '',
+           aDiv = document.getElementsByTagName('div'),
+           num = 0,
+           timer = null,
+           flag = true, //代表方向
+           onOff = true;
+       for(var i=0,len=20;i<len;i++) {
+       	   str += '<div style="width: 50px;height: 50px;background: red;position: absolute;top: 0;left: '+i*60+'px;"></div>'
+       }
+       document.body.innerHTML = str;
+   	   document.onclick = function() {
+
+   	   	   if(!onOff) {return;} //如果一点击，前一轮没有完成就直接退出
+
+   	   	   onOff = false; //用于检测一轮是否完成，新一轮开始所以onOff为false
+   	   	   clearInterval(timer);
+       	   timer = setInterval(function() {
+              doMove(aDiv[num],'top',23,flag?500:0,num == len-1?function() {
+              	 onOff = true;
+                 flag = !flag;
+              }:null);
+
+              num++;
+
+              if(num === len) {
+              	 clearInterval(timer);
+              	 num = 0;
+              }
+       	   },100);
+       };
+       
+	</script>
+</body>
+</html>

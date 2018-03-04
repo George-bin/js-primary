@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        html,body,div,ul,li,span,input,p {
+        	padding: 0;
+        	margin: 0;
+        }
+        body { background-color: #EFEFE7; }
+        li { list-style: none; }
+        #wrap {
+        	width: 670px;
+        	margin: 40px auto 0;
+        	overflow: hidden;
+        }
+        #wrap p {
+        	float: left;
+        	width: 510px;
+        	padding: 40px 30px;
+        	margin-bottom: 20px;
+        	font-size: 20px;
+        	line-height: 1.5;
+        	background-color: #fff;
+        }
+        #button {
+        	float: right;
+        	width: 100px;
+        }
+        #button li {
+        	display: none;
+        	width: 100px;
+        	height: 40px;
+        	line-height: 40px;
+        	margin-bottom: 10px;
+        	font-size: 17px;
+        	font-weight: bold;
+        	text-align: center;
+        	color: #fff;
+        	background-color: #bbb;
+        	cursor: pointer;
+        }
+        #button li:hover {
+        	background-color: #ff8f00;
+        }
+        #button li:first-child:hover {
+        	background-color: #868686;
+        }
+        #toolbox {
+        	display: none;
+        	clear: both;
+        	position: relative;
+        	width: 510px;
+        	height: 120px;
+        	padding: 20px;
+        	border: 10px solid #cacaca;
+        }
+        #close {
+        	position: absolute;
+        	right: 7px;
+        	top: 7px;
+        	font-size: 24px;
+        	cursor: pointer;
+        }
+        #pattern {
+        	width: 510px;
+        	height: 30px;
+        	border-bottom: 2px solid #ff8f00;
+        }
+        #pattern span {
+        	float: left;
+        	width: 100px;
+        	height: 30px;
+        	line-height: 30px;
+        	font-size: 17px;
+        	font-weight: bold;
+        	text-align: center;
+        	cursor: pointer;
+        }
+        /*.pattern span:first-child {
+        	background-color: #ff8f00;
+        }*/
+        #search, #replace {
+        	display: none;
+        	clear: both;
+        	margin-top: 27px;
+        }
+        #search span, #replace span {
+        	float: left;
+        	border: 1px solid #ddd;
+        }
+        #search .text {
+        	margin-right: 7px;
+        }
+        #search input { border: 0; }
+        #search .text input {
+        	width: 286px;
+        	height: 30px;
+        	line-height: 30px;
+        	padding: 0 7px;
+        	border: 0;
+        }
+        #search .btn input, #replace .btn input {
+        	width: 80px;
+        	height: 30px;
+        	font-weight: bold;
+        	color: #484848;
+        	border: 0;
+        	cursor: pointer;
+        }
+        #replace .text {
+        	width: 170px;
+        	height: 30px;
+        	margin-right: 7px;
+        }
+        #replace .text input {
+            width: 156px;
+        	height: 30px;
+        	padding: 0 7px;
+        	border: 0;
+        }
+        .hover {
+        	color: #fff;
+        	background-color: #ff8f00;
+        }
+	</style>
+</head>
+<body>
+	<div id="wrap">
+        <p>
+           妙味课堂是一支充满温馨并且极富人情味的IT培训团队；2010-2011年，妙味深度关注WEB前端开发领域，为此精心研发出一套灵活而充满趣味的JavaScript课程。2011-2013年，妙味精准研发出最新HTML5\CSS3课程，并推出远程培训课程方案，尝试将线下优良的培训模式移植到远程网络培训中，希望尽最大努力，将一种快乐愉悦的授课体验、结合HTML\CSS\JS知识点，精准传递给妙味课堂的每一位学员。
+        </p>
+        <ul id="button">
+        	<li style="display: block;">展开</li>
+        	<li>查找</li>
+        	<li>替换</li>
+        </ul>
+        <div id="toolbox">
+            <div id="close">×</div>
+            <div id="pattern">
+                <span>查找</span><span>替换</span>
+            </div>
+            <div id="search">
+                <span class="text">
+                    <input type="text" />
+                </span>
+                <span class="btn">
+                    <input type="button" value="查找" />
+                </span>
+			</div>
+			<div id="replace">
+                <span class="text">
+                    <input type="text" />
+                </span>
+				<span class="text">
+                    <input type="text" />
+				</span>
+				<span class="btn">
+                    <input type="button" value="替换" />
+				</span>
+			</div>
+        </div>
+	</div>
+	<script>
+        var oWrap = document.getElementById('wrap'),
+            oP = oWrap.getElementsByTagName('p')[0],
+            oButton = document.getElementById('button'),
+            aLi = oButton.getElementsByTagName('li'),
+            oToolbox = document.getElementById('toolbox'),
+            oPattern = document.getElementById('pattern'),
+            oClose = document.getElementById('close'),
+            aSpan = oPattern.getElementsByTagName('span'),
+            oSearch = document.getElementById('search'),
+            aInp1 = oSearch.getElementsByTagName('input'),
+            oReplace = document.getElementById('replace'),
+            aInp2 = oReplace.getElementsByTagName('input'),
+            str = oP.innerHTML;
+
+        aLi[0].onclick = function() {
+
+            var len = aLi.length;
+
+        	for(var i=0; i<len; i++) {
+
+        		aLi[i].style.display = 'block';
+
+        	}
+
+        }
+
+        oClose.onclick = function() {
+
+        	var len = aLi.length;
+
+        	for(var i=1; i<len; i++) {
+
+        		aLi[i].style.display = 'none';
+
+        	}
+
+        	oToolbox.style.display = 'none';
+        }
+
+        aLi[1].onclick = function() {
+
+            oToolbox.style.display = 'block';
+
+            oReplace.style.display = 'none';
+
+            oSearch.style.display = 'block';
+
+            var len = aLi.length;
+
+            for(var i=1; i<len; i++) {
+
+        		aLi[i].style.display = 'none';
+
+        	}
+
+            for(var i=0,len=aSpan.length; i<len; i++) {
+
+            	aSpan[i].className = '';
+
+            }
+
+            aSpan[0].className = 'hover';
+        }
+
+        aLi[2].onclick = function() {
+
+            oToolbox.style.display = 'block';
+
+            oSearch.style.display = 'none';
+
+            oReplace.style.display = 'block';
+
+            var len = aLi.length;
+
+            for(var i=1; i<len; i++) {
+
+        		aLi[i].style.display = 'none';
+
+        	}
+
+            for(var i=0,len=aSpan.length; i<len; i++) {
+
+            	aSpan[i].className = '';
+            	
+            }
+
+            aSpan[1].className = 'hover';
+        }
+        
+        aSpan[0].onclick = function() {
+
+        	oReplace.style.display = 'none';
+
+            oSearch.style.display = 'block';
+
+            for(var i=0,len=aSpan.length; i<len; i++) {
+
+            	aSpan[i].className = '';
+
+            }
+
+            aSpan[0].className = 'hover';
+        }
+
+        aSpan[1].onclick = function() {
+
+        	oReplace.style.display = 'block';
+
+            oSearch.style.display = 'none';
+
+            for(var i=0,len=aSpan.length; i<len; i++) {
+
+            	aSpan[i].className = '';
+
+            }
+
+            aSpan[1].className = 'hover';
+        }
+
+        aInp1[1].onclick = function() {
+
+            if(!aInp1[0].value) {
+
+            	alert('请输入要查找的内容！');
+
+            	oP.innerHTML = str;
+
+            }else {
+
+                if(str.indexOf(aInp1[0].value) == -1) {
+
+                	alert('对不起，没有找到您输入的【'+ aInp1[0].value +'】');
+
+                	oP.innerHTML = str;
+
+                	aInp1[0].value = '';
+
+                }else {
+
+                	oP.innerHTML = str;
+
+                	var arr = str.split(aInp1[0].value);
+
+                	oP.innerHTML = arr.join('<span style="background: yellow">' + aInp1[0].value + '</span>');
+
+                	aInp1[0].value = '';
+                }    	
+            }
+        }
+
+        aInp2[2].onclick = function() {
+
+        	if(!aInp2[0].value) {
+
+        		alert('请输入要替换的内容！');
+
+        		oP.innerHTML = str;
+
+        	}else {
+
+        		if(str.indexOf(aInp2[0].value) == -1) {
+
+        			alert('对不起，没有找到您输入的:'+ aInp2[0].value +'');
+
+        		}else {
+
+        			if(!aInp2[1].value) {
+
+        				if(!confirm('您确定要删除输入的内容？')) {
+        				// 如果用户点击确定按钮，则 confirm() 返回 true。如果点击取消按钮，则 confirm() 返回 false。在用户点击确定按钮或取消按钮把对话框关闭之前，它将阻止用户对浏览器的所有输入。在调用 confirm() 时，将暂停对 JavaScript 代码的执行，在用户作出响应之前，不会执行下一条语句。
+
+        					aInp2[0].value = '';
+
+        					return;
+
+        				}
+        			}
+    				oP.innerHTML = str;
+
+    				var arr = str.split(aInp2[0].value);
+
+    				oP.innerHTML = arr.join(aInp2[1].value);
+
+    				str = oP.innerHTML;
+
+    				aInp2[0].value = '';
+
+    				aInp2[1].value = '';
+        			
+        		}
+        	}
+        }
+	</script>
+</body>
+</html>

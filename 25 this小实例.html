@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       li {
+       	float: left;
+       	position: relative;
+       	width: 100px;
+       	height: 150px;
+       	margin-right: 30px;
+       	background-color: #f1f1f1;
+       }
+       div {
+       	display: none;
+       	position: absolute;
+       	top: 75px;
+       	left: 10px;
+       	width: 80px;
+       	height: 200px;
+       	background-color: red;
+       }
+	</style>
+</head>
+<body>
+	<ul>
+		<li>
+			<div></div>
+		</li>
+		<li>
+			<div></div>
+		</li>
+		<li>
+			<div></div>
+		</li>
+		<li>
+			<div></div>
+		</li>
+	</ul>
+	<script>
+      var aLi = document.getElementsByTagName('li');
+      var that = null;
+      for(var i=0;i<aLi.length;i++) {
+      	aLi[i].onmouseover = function() {
+      		that = this;
+      		fn1();
+      	};
+      	aLi[i].onmouseout = function() {
+      		this.getElementsByTagName('div')[0].style.display = 'none';
+      	};
+      }
+      function fn1() {
+      	that.getElementsByTagName('div')[0].style.display = 'block';
+      }
+	</script>
+</body>
+</html>

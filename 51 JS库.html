@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn" type="button" value="按钮" />
+	<script>
+	   $(function() {
+	   	  $('btn').onclick = function() {
+	   	  	 $(this).style.backgroundColor = 'yellow';
+	   	  };
+	   });
+       function $(v) {
+       	  if(typeof v === 'function') {
+       	  	 window.onload = v;
+       	  }else if(typeof v === 'string') {
+       	  	 return document.getElementById(v)
+       	  }else if(typeof v === 'object') {
+       	  	 return v;
+       	  }
+       }
+	</script>
+</body>
+</html>

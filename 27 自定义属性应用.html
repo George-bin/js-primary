@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      li {
+      	float: left;
+      	list-style: none;
+      	width: 100px;
+      	height: 200px;
+      	margin-right: 10px;
+      	background: url(images/noclick.jpg);
+
+      }
+	</style>
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script>
+       var aLi = document.getElementsByTagName('li');
+              // var onOff = true;
+       for(var i=0;i<aLi.length;i++) {
+       	aLi[i].onOff = true;
+
+       	aLi[i].onclick = function() {
+       		if(this.onOff) {
+       			this.style.background = 'url(images/click.jpg)';
+       			this.onOff = false;
+       			// onOff = false;
+       		}else {
+       			this.style.background = 'url(images/noclick.jpg)';
+       			this.onOff = true;
+       			// onOff = true;
+       		}
+       	}
+       }
+	</script>
+</body>
+</html>

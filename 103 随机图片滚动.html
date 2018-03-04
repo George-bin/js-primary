@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        html,body,ul,li,div,img {
+        	padding: 0;
+        	margin: 0;
+        }
+        body { background-color: #cdcdcd; }
+        li { list-style: none; }
+        img { border: 0; }
+        ul {
+        	width: 220px;
+        	margin: 50px auto 0;
+        	padding-bottom: 7px;
+        	border: 20px solid #fff;
+        	border-radius: 10px;
+        	font-size: 0;
+        }
+        li {
+        	position: relative;
+        	display: inline-block;
+        	width: 100px;
+        	height: 50px;
+        	margin-left: 7px;
+        	margin-top: 7px;
+        	overflow: hidden;
+        	/*background-color: red;*/
+        }
+        div {
+        	position: absolute;
+        	top: 0;
+        	left: 0;
+        }
+	</style>
+</head>
+<body>
+	<ul>
+		<li>
+            <div>
+                <img src="images/sui1.jpg" alt="" /><img src="images/sui2.jpg" alt="" />
+            </div>
+		</li>
+		<li>
+            <div>
+                <img src="images/sui3.jpg" alt="" /><img src="images/sui4.jpg" alt="" />
+            </div>
+		</li>
+		<li>
+            <div>
+                <img src="images/sui5.jpg" alt="" /><img src="images/sui6.jpg" alt="" />
+            </div>
+		</li>
+		<li>
+            <div>
+                <img src="images/sui7.jpg" alt="" /><img src="images/sui8.jpg" alt="" />
+            </div>
+		</li>
+		<li>
+            <div>
+                <img src="images/sui9.jpg" alt="" /><img src="images/sui10.jpg" alt="" />
+            </div>
+		</li>
+		<li>
+            <div>
+                <img src="images/sui11.jpg" alt="" /><img src="images/sui12.jpg" alt="" />
+            </div>
+		</li>
+		<li>
+            <div>
+                <img src="images/sui13.jpg" alt="" /><img src="images/sui14.jpg" alt="" />
+            </div>
+		</li>
+		<li>
+            <div>
+                <img src="images/sui15.jpg" alt="" /><img src="images/sui16.jpg" alt="" />
+            </div>
+		</li>
+	</ul>
+	<script src="js/JS.js"></script>
+	<script>
+        var oUl = document.getElementsByTagName('ul')[0],
+            aLi = oUl.getElementsByTagName('li'),
+            flag = 0;
+
+        for(var i=0, len=aLi.length; i<len; i++) {
+
+        	fnSlide(aLi[i]);
+
+        }
+
+        function fnSlide(li) {
+
+        	var oDiv = li.getElementsByTagName('div')[0];
+
+        	function fnSlideOnce() {
+
+        		setTimeout(function() {
+
+        			flag = flag === 0 ? -50 : 0;
+
+        			doMove(oDiv, 'top', 10, flag, fnSlideOnce);
+
+        		},Math.round(Math.random() * 2000 + 1000));
+        	}
+
+        	fnSlideOnce();
+        }
+	</script>
+</body>
+</html>

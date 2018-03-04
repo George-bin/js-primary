@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	 padding: 0;
+       	 margin: 0;
+       }
+       body {
+       	 background-color: #ddd;
+       	 font-size: 13px;
+       }
+       img { border: 0; }
+       li { list-style: none; }
+       #content {
+       	 position: relative;
+       	 width: 500px;
+       	 height: 300px;
+       	 margin: 40px auto;
+       	 border: 10px solid white;
+       	 overflow: hidden;
+       }
+       #wrap {
+       	 position: absolute;
+       	 left: 0;
+       	 width: 2000px;
+       	 font-size: 0;
+       }
+       #info {
+       	 position: absolute;
+       	 left: 0;
+       	 top: 300px;       	 
+       	 width: 500px;
+       	 color: white;  	 
+       }
+       #info li {
+       	 position: absolute;
+       	 left: 0px;
+       	 top: 0;
+       	 width: 500px;
+       	 height: 100px;
+       	 background-color: #000;
+       	 opacity: 0.7;
+       	 filter: alpha(opacity=70);
+       }
+       h2 {
+       	 height: 24px;
+       	 line-height: 24px;
+       	 font-size: 14px;
+       	 text-indent: 12px;
+       }
+       p {
+       	 line-height: 20px;
+       	 text-indent: 12px;
+       }
+       
+	</style>
+</head>
+<body>
+	<div id="content">
+	   <div id="wrap">
+         <img src="images/zu1-1.jpg" alt="" />
+         <img src="images/zu1-2.jpg" alt="" />
+         <img src="images/zu1-3.jpg" alt="" />
+         <img src="images/zu1-4.jpg" alt="" />
+         <img src="images/zu1-1.jpg" alt="" />
+
+	   </div>
+       
+       <ul id="info">
+         <li class="hover">
+            <h2>栏目1</h2>
+            <p>1：擅长离婚诉讼、一向在法庭上慷慨激昂口若悬河的著名律师池海东（吴秀波 饰）算阴沟里翻船了，老婆公然给他戴了绿帽子，更倒霉的是作为受害者的他竟然输掉了和老婆的离婚官司。</p>
+         </li>
+         <li>
+            <h2>栏目2</h2>
+            <p>2：擅长离婚诉讼、一向在法庭上慷慨激昂口若悬河的著名律师池海东（吴秀波 饰）算阴沟里翻船了，老婆公然给他戴了绿帽子，更倒霉的是作为受害者的他竟然输掉了和老婆的离婚官司。</p>
+         </li>
+         <li>
+            <h2>栏目3</h2>
+            <p>3：擅长离婚诉讼、一向在法庭上慷慨激昂口若悬河的著名律师池海东（吴秀波 饰）算阴沟里翻船了，老婆公然给他戴了绿帽子，更倒霉的是作为受害者的他竟然输掉了和老婆的离婚官司。</p>
+         </li>
+         <li>
+            <h2>栏目4</h2>
+            <p>4：擅长离婚诉讼、一向在法庭上慷慨激昂口若悬河的著名律师池海东（吴秀波 饰）算阴沟里翻船了，老婆公然给他戴了绿帽子，更倒霉的是作为受害者的他竟然输掉了和老婆的离婚官司。</p>
+         </li>
+         <li>
+            <h2>栏目1</h2>
+            <p>1：擅长离婚诉讼、一向在法庭上慷慨激昂口若悬河的著名律师池海东（吴秀波 饰）算阴沟里翻船了，老婆公然给他戴了绿帽子，更倒霉的是作为受害者的他竟然输掉了和老婆的离婚官司。</p>
+         </li>
+       </ul>
+	</div>
+	<script>
+       function getStyle(obj,attr) {
+       	   return obj.currentStyle?obj.currentStyle[atttr]:getComputedStyle(obj)[attr];
+       }
+       var oWrap = document.getElementById('wrap'),
+           aImg = document.getElementsByTagName('img'),
+           num = 0,
+           timer = null,
+           oInfo = document.getElementById('info'),
+           aLi = oInfo.getElementsByTagName('li');
+
+       //初始化
+       doMove(aLi[0],'top',20,50,-100,function() {
+       	   setTimeout(function(){
+       	   	   doMove(aLi[num],'top',20,50,0);
+       	   },1500)
+       });
+
+       timer = setInterval(function(){
+       	   var target = -500*(num+1);
+
+       	   doMove(oWrap,'left',20,20,target,function(){
+
+       	   	  doMove(aLi[num],'top',20,50,-97,function() {
+
+                  setTimeout(function(){
+                  	  doMove(aLi[num],'top',20,50,0);
+
+                  	  if(num == aImg.length-1) {
+                  	  	  oWrap.style.left = 0;
+                  	  	  num = 0;
+                  	  }
+
+                  },1500);
+
+       	   	  });
+
+       	   });
+       	   num++;
+       },3000);
+
+       function doMove(obj,attr,step,frequency,target,endFn) {
+           clearInterval(obj.timer);
+           step = parseInt(getStyle(obj,attr)) < target?step:-step;
+
+           obj.timer = setInterval(function(){
+           	  var displace = parseInt(getStyle(obj,attr))+step; //位移
+
+           	  if(step>0 && displace>target || step<0 && displace < target) {
+           	  	  displace = target;
+           	  }
+
+           	  obj.style[attr] = displace+'px';
+           	  if(displace == target) {
+           	  	  clearInterval(obj.timer);
+           	  	  endFn && endFn();
+           	  }
+           },frequency);
+       }
+	</script>
+</body>
+</html>

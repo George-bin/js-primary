@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        html,body,div,p,span,ul,li,figure,img {
+        	padding: 0;
+        	margin: 0;
+        	font-size: 14px;
+        }
+        li { list-style: none; }
+        img { border: 0; }
+        #wrap {
+        	width: 916px;
+        	margin: 0 auto;
+        	padding: 20px 10px 10px 10px;
+        	background-color: #e2e2e2;
+        }
+        #wrap p { text-align: center; }
+        #wrap p span {
+        	padding: 7px 20px;
+        	font-weight: bold;
+        	color: #fff;
+        	background-color: #009c7d;
+        	cursor: pointer;
+        }
+        #wrap p span:hover { background-color: #007d64; }
+        #wrap p span:first-child { margin-right: 7px; }
+        #wrap ul {
+        	width: 896px;
+        	margin-top: 30px;
+        	padding: 10px;
+        	
+        	font-size: 0;
+        }
+        #wrap ul li {
+        	display: inline-block;
+        	width: 200px;
+        	margin: 2px;
+        	border: 10px solid #fff;
+        	text-align: center;
+        	background-color: #fff;
+        }
+        ul li img {
+        	display: block;
+        }
+        ul li figcaption {
+        	display: block;
+        	width: 100%;
+        	height: 40px;
+        	margin-top: 7px;
+        	line-height: 40px;
+        	font-weight: bold;
+        	color: #003f39;
+        	background-color: #e2e2e2;
+        }
+	</style>
+</head>
+<body>
+	<div id="wrap">
+        <p>
+            <span>从大到小</span><span>随机排序</span>
+        </p>
+        <ul>
+        	<li>
+                <figure>
+                    <img src="images/da1.jpg" alt="" />
+                    <figcaption>1-图片一</figcaption>
+                </figure>
+        	</li>
+        	<li>
+                <figure>
+                    <img src="images/da2.jpg" alt="" />
+                    <figcaption>2-图片二</figcaption>
+                </figure>
+        	</li>
+        	<li>
+                <figure>
+                    <img src="images/da3.jpg" alt="" />
+                    <figcaption>3-图片三</figcaption>
+                </figure>
+        	</li>
+        	<li>
+                <figure>
+                    <img src="images/da4.jpg" alt="" />
+                    <figcaption>4-图片四</figcaption>
+                </figure>
+        	</li>
+        	<li>
+                <figure>
+                    <img src="images/da5.jpg" alt="" />
+                    <figcaption>5-图片五</figcaption>
+                </figure>
+        	</li>
+        	<li>
+                <figure>
+                    <img src="images/da6.jpg" alt="" />
+                    <figcaption>6-图片六</figcaption>
+                </figure>
+        	</li>
+        	<li>
+                <figure>
+                    <img src="images/da7.jpg" alt="" />
+                    <figcaption>7-图片七</figcaption>
+                </figure>
+        	</li>
+        	<li>
+                <figure>
+                    <img src="images/da8.jpg" alt="" />
+                    <figcaption>8-图片八</figcaption>
+                </figure>
+        	</li>
+        </ul>
+	</div>
+	<script>
+        var oWrap = document.getElementById('wrap'),
+            aSpan = oWrap.getElementsByTagName('span'),
+            oUl = oWrap.getElementsByTagName('ul')[0],
+            aLi = oWrap.getElementsByTagName('li'),
+            flag = false,
+            arr = [],
+            str = '';
+
+        for(var i=0, len=aLi.length; i<len; i++) {
+
+        	arr.push(aLi[i]);
+
+        }
+
+        aSpan[0].onclick = function() {
+            
+            arr.reverse();
+
+            str = '';
+
+            for(var i=0; i<arr.length; i++) {
+
+            	str += '<li>' + arr[i].innerHTML + '</li>';
+
+            }
+
+            oUl.innerHTML = str;
+
+            this.innerHTML = flag ? '从大到小' : '从小到大' ;
+
+            flag = !flag;
+
+        }
+
+        aSpan[1].onclick = function() {
+
+        	var arr2 = [];
+
+        	for(var i=0, len=aLi.length; i<len; i++) {
+
+        		arr2.push(aLi[i]);
+
+        	}
+        	arr2.sort(function(a, b) {
+
+        		return Math.random() - 0.5;
+
+        	});
+
+        	str = '';
+
+        	for(var i=0; i<arr2.length; i++) {
+
+        		str += '<li>' + arr2[i].innerHTML + '</li>';
+
+        	}
+
+        	oUl.innerHTML = str;
+        }
+	</script>
+</body>
+</html>

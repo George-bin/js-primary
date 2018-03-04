@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        html,body,div,input,span {
+        	padding: 0;
+        	margin: 0;
+        }
+        .wrap {
+        	width: 600px;
+        	height: 40px;
+        	margin: 40px auto;
+        }
+        .t1 {
+        	width: 400px;
+        }
+	</style>
+</head>
+<body>
+    <div class="wrap">
+        距离：<input class="t1" type="text" value="January 3, 2018 17:12:00" /><br />
+        还剩：<input class="t1" type="text" />
+        <input type="button" value="开始倒计时" />
+    </div>
+	<script>
+	    //时间戳 alert(new Date().getTime());
+        var aInp = document.getElementsByTagName('input'),
+            iNew = null,
+            iNow = null,
+            t = 0,
+            str = '';
+
+        aInp[2].onclick = function() {
+        	clearInterval(this.timer);
+        	iNew = new Date(aInp[0].value);
+        	function fnTime() {
+        		iNow = new Date();
+        		t = Math.floor((iNew-iNow)/1000);
+        		if(t >= 0) {
+		            str = Math.floor(t/86400) + ' 天 ' + Math.floor(t%86400/3600) + ' 时 ' + Math.floor(t%86400%3600/60) + ' 分 ' + Math.floor(t%60) + ' 秒';
+		            aInp[1].value = str;
+        		}else {
+        			clearInterval(this.timer);
+        		}
+	            
+        	}
+            this.timer = setInterval(fnTime,1000);
+        }
+	</script>
+</body>
+</html>

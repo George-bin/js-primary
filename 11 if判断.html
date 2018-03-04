@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      h1 {
+      	font-size: 18px;
+      	font-weight: normal;
+      }
+      img {
+      	cursor: pointer;
+      }
+	</style>
+</head>
+<body>
+	<h1>点击图片切换：</h1>
+	<img id="img" src="images/01.jpg" alt="二次元">
+	<script>
+      var img = document.getElementById('img');
+      var onOff = true;
+      img.onclick = function() {
+      	if(onOff) {
+      		img.src = 'images/02.jpg';
+      		onOff = false;
+      	}else {
+      		img.src = 'images/01.jpg'
+      		onOff = true;
+      	}
+      }
+	</script>
+</body>
+</html>

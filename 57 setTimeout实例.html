@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      #show {
+      	 float: left;
+      	 width: 200px;
+      	 height: 500px;
+      	 margin-right: 7px;
+      	 background-color: red;
+      }
+      #hide {
+      	 float: left;
+      	 width: 240px;
+      	 height: 200px;
+      	 background-color: blue;
+      }
+	</style>
+</head>
+<body>
+	<div id="show"></div>
+	<div id="hide"></div>
+	<script type="text/javascript" src="js/JS.js"></script>
+	<script>
+       var oDiv = $('show');
+       var oTitle = $('hide');
+       oDiv.onmouseover = show;
+       oDiv.onmouseout = hide;
+       var timer = null;
+       oTitle.onmouseover = show
+       oTitle.onmouseout = hide;
+       function show() {
+       	  clearInterval(timer);
+          oTitle.style.display = 'block';
+       	  
+       }
+       function hide() {
+       	   timer = setTimeout(function() {
+          	  oTitle.style.display = 'none';
+          },2000)
+       }
+	</script>
+</body>
+</html>

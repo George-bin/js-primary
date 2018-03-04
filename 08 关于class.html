@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      * {
+      	margin: 0;
+      	padding: 0;
+      }
+      #content {
+      	border: 1px solid #ddd;
+      	padding: 10px;
+      	margin: 2em 10%;
+      }
+      form {
+        float: left;
+      	margin-bottom: 10px;
+      }
+      input {
+        float: left;
+      	width: 30px;
+      	height: 30px;
+        margin-right: 5px;
+      }
+      #btn4 {
+        margin-right: 0;
+      } 
+      p {
+      	clear: both;
+      	text-indent: 2em;
+      }
+      .red {
+        width: 300px;
+        padding: 20px;
+        border: 10px solid #ccc;
+        color: yellow;
+        background-color: red;
+      }
+      .yellow {
+        width: 500px;
+        padding: 10px;
+        border: 10px solid #ccc;
+        color: red;
+        background-color: yellow;
+      }
+	</style>
+</head>
+<body>
+	<div id="content">
+	  <form action="">
+       
+        <input id="btn1" type="button" value="-" />
+        <input id="btn2" type="button" value="+" />
+        <input id="btn3" type="button" value="红" />
+        <input id="btn4" type="button" value="黄" />
+
+	  </form>
+      <p id="p1">《方案》指出，我国统一的企业职工基本养老保险制度建立以来，各项工作取得明显成效，对建立社会主义市场经济体制、维护改革发展稳定大局、保障企业离退休人员权益发挥了重要作用。同时，受多种因素影响，形成了一定的企业职工基本养老保险基金缺口。随着经济社会发展和人口老龄化加剧，基本养老保险基金支付压力不断加大。在推动国有企业深化改革的同时，通过划转部分国有资本充实社保基金，使全体人民共享国有企业发展成果，增进民生福祉，促进改革和完善基本养老保险制度，实现代际公平，增强制度的可持续性。
+      </p>
+	</div>
+	<script>
+      	var oBtn1 = document.getElementById('btn1');
+      	var oBtn2 = document.getElementById('btn2');
+        var oBtn3 = document.getElementById('btn3');
+        var oBtn4 = document.getElementById('btn4');
+      	var oP = document.getElementById('p1');
+      	var num = 15;
+      	oBtn1.onclick = function() {
+           // num += 1;
+           num--; 
+           oP.style.fontSize = num + 'px';
+        }
+        oBtn2.onclick = function() {
+           // num += 1;
+           num++; 
+           oP.style.fontSize = num + 'px';
+        }
+        oBtn3.onclick = function() {
+           oP.className = 'red';
+           // oP.style.width = '300px'
+           // oP.style.backgroundColor = 'red';
+           // oP.style.padding = '20px';
+           // oP.style.color = 'yellow';
+           // oP.style.border = '10px solid #ccc';
+        }
+        oBtn4.onclick = function() {
+          oP.className = 'yellow';
+        }
+	</script>
+</body>
+</html>

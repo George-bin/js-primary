@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	 padding: 0;
+       	 margin: 0;
+       }
+       a { 
+       	  text-decoration: none; 
+       	  color: white;
+       }
+       li { list-style: none; }
+       body { font-size: 14px; }
+       .clearfix { zoom: 1; }
+       .clearfix:after {
+       	  content: '';
+       	  display: block;
+       	  clear: both;
+       	  height: 0;
+       	  line-height: 0;
+       	  visibility: hidden;
+       }
+       #wrap {
+       	  position: relative;
+       	  width: 600px;
+       	  /*height: 40px;
+       	  line-height: 40px;*/
+       	  margin: 40px auto;
+       	  border-radius: 10px;
+       	  background-color: #3385ff;
+       }
+       .left {
+       	  float: left;
+       	  margin-left: 17px;
+       	  padding: 5px 0;
+       }
+       .left li {
+       	  float: left;
+       	  width: 70px;
+       	  height: 30px;
+       	  line-height: 30px;
+       	  border-radius: 7px;
+       	  text-align: center;
+       }
+       span {
+       	  float: right;
+       	  height: 40px;
+       	  line-height: 40px;
+       	  margin-right: 17px;
+       }
+       .left li:hover {
+       	  background-color: #74acff;
+       }
+       .hide {
+       	  clear: both; 
+       }
+       .hide  a {
+       	  color: #3160a7;
+       }
+       .hide ul {
+       	  display: none;
+       	  background-color: #adc8f1;
+       	  border-radius: 7px;
+       	  top: 45px;
+       }
+       .hide ul li {
+       	  float: left;
+       	  padding: 7px 7px;
+       }
+       .hide li a {
+       	  border-right: 1px solid #3160a7;
+       	  padding-right: 7px;
+       }
+       .hide li:last-child a {
+       	  border-right: 0;
+       }
+       .hide li a:hover {
+          text-decoration: underline;
+       }
+       .hide .home {
+          position: absolute;
+          left: 7px;
+       }
+       .hide .about {
+          position: absolute;
+          left: 67px;
+       }
+       .hide .works {
+          position: absolute;
+          left: 147px;
+       }
+       .hide .other {
+          position: absolute;
+          left: 207px;
+       }
+
+	</style>
+</head>
+<body>
+	<div id="wrap" class="clearfix">
+       <ul class="left">
+       	<li><a href="#">首页</a></li>
+       	<li><a href="#">关于我们</a></li>
+       	<li><a href="#">作品</a></li>
+       	<li><a href="#">博客</a></li>
+       </ul>
+       <span><a href="#">>>更多</a></span>
+       <div id="list" class="hide">
+          <ul class="home">
+       	   	<li><a href="#">最新更新</a></li>
+       	   	<li><a href="#">活动</a></li>
+       	   	<li><a href="#">报名试听</a></li>
+       	   	<li><a href="#">学员反馈</a></li>
+       	   </ul>
+       	   <ul class="about">
+       	   	<li><a href="#">妙味课堂</a></li>
+       	   	<li><a href="#">培训方式</a></li>
+       	   	<li><a href="#">培训理念</a></li>
+       	   	<li><a href="#">联系我们</a></li>
+       	   </ul>
+       	   <ul class="works">
+       	   	<li><a href="#">船谷</a></li>
+       	   	<li><a href="#">矩阵</a></li>
+       	   	<li><a href="#">留学E网</a></li>
+       	   	<li><a href="#">欧美汇</a></li>
+       	   </ul>
+       	   <ul class="other">
+       	   	<li><a href="#">JS教程</a></li>
+       	   	<li><a href="#">弹出层效果</a></li>
+       	   	<li><a href="#">3D球面标签云</a></li>
+       	   	<li><a href="#">CSS源码</a></li>
+       	   </ul>
+       </div>
+	</div>
+	<script type="text/javascript" src="js/JS.js"></script>
+	<script type="text/javascript">
+       var oWrap = $('wrap');
+       var oUl = wrap.getElementsByTagName('ul')[0];
+       var oDiv = document.getElementById('list');
+       var aLi = oUl.getElementsByTagName('li');
+       var aUl = oDiv.getElementsByTagName('ul');
+       var timer = null;
+       var that;
+       for(var i=0;i<aLi.length;i++) {
+       	   aLi[i].index = i;
+       	   aLi[i].onmouseover = function() {
+       	   	   for(var i=0;i<aLi.length;i++) {
+       	   	   	  aUl[i].style.display = 'none';
+       	   	   }
+       	   	   aUl[this.index].style.display = 'block';
+       	   	   clearInterval(timer);
+       	   };
+       	   aLi[i].onmouseout = function() {
+       	   	  that = this.index;
+       	   	  fn();
+       	   };
+       	   aUl[i].onmouseover = function() {
+       	   	  clearInterval(timer);
+       	   };
+       	   aUl[i].onmouseout = function() {
+       	   	  fn();
+       	   };
+       }
+       function fn() {
+       	   timer = setTimeout(function() {
+       	   	  	aUl[that].style.display = 'none';
+       	   },2000);
+       }
+	</script>
+</body>
+</html>

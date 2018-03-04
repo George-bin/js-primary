@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+      window.onload = function(){
+ 
+          for(var i= 0,j= 0;i<100;i++){
+              var div = document.createElement("div");
+                  div.style.position = "absolute";
+                  div.style.width = "50px";
+                  div.style.height ="50px";
+                  div.style.left = ((i%10)*50+10)+"px";
+                  div.style.border= "1px solid #ddd";
+                  div.innerText = i;
+                  if(i%10==0){
+                      ++j;
+                  }
+              div.style.top = ((j-1)*50+10)+"px";
+ 
+                document.body.appendChild(div);
+          }
+      }
+    </script>
+</head>
+<body>
+ 
+</body>
+</html>

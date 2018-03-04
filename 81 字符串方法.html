@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" />
+	<input type="button" value="加密" />
+	<div>加密。。。</div>
+	<script>
+        var aInp = document.getElementsByTagName('input'),
+            oDiv = document.getElementsByTagName('div')[0];
+
+        aInp[1].onclick = function() {
+
+        	var str = aInp[0].value;
+
+        	var str2 = '';
+
+        	for(var i=0; i<str.length; i++) {
+
+        		str2 += String.fromCharCode(str.charCodeAt(i)-10000) + ':';
+
+        	}
+
+        	oDiv.innerHTML = str2;
+        }
+	</script>
+</body>
+</html>

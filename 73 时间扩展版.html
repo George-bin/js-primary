@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       img {
+       	 width: 61px;
+       	 height: 81px;
+       }
+       #div2 {
+			margin: 50px auto;
+			font-size: 0;
+			text-align: center;
+		}
+		#div2 img{
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2">
+       <img src="images/0.jpg" alt="time" />
+       <img src="images/0.jpg" alt="time" />
+       <img src="images/colon.jpg" alt="time" />
+       <img src="images/0.jpg" alt="time" />
+       <img src="images/0.jpg" alt="time" />
+       <img src="images/colon.jpg" alt="time" />
+       <img src="images/0.jpg" alt="time" />
+       <img src="images/0.jpg" alt="time" />
+    </div>
+	<script type="text/javascript">
+       var Div1 = document.getElementById('div1'),
+           Div2 = document.getElementById('div2'),
+           aImg = Div2.getElementsByTagName('img'),
+           arrImg = ['images/0.jpg','images/1.jpg','images/2.jpg','images/3.jpg','images/4.jpg','images/5.jpg','images/6.jpg','images/7.jpg','images/8.jpg','images/9.jpg'];
+       getTime();
+       setInterval(getTime,1000);
+       function getTime() {
+       	   var myTime = new Date(),
+               iYear = myTime.getFullYear(),
+               iMonth = myTime.getMonth()+1,
+               iDate = myTime.getDate(),
+               iDay = myTime.getDay(),
+               iHours = myTime.getHours(),
+               iMinutes = myTime.getMinutes(),
+               iSeconds = myTime.getSeconds(),
+               str = '',
+               str2 = '';
+           switch(iDay) {
+           	   case 0:
+           	       iDay = '星期天';
+           	       break;
+           	   case 1:
+           	       iDay = '星期一';
+           	       break;
+           	   case 2:
+           	       iDay = '星期二';
+           	       break;
+           	   case 3:
+           	       iDay = '星期三';
+           	       break;
+           	   case 4:
+           	       iDay = '星期四';
+           	       break;
+           	   case 5:
+           	       iDay = '星期五';
+           	       break;
+           	   case 6:
+           	       iDay = '星期六';
+           	       break;
+           }
+           str = iYear + '年' + iMonth + '月' + iDate + '日 ' + iDay + ' ' + toTwo(iHours) + ' : ' + toTwo(iMinutes) + ' : ' + toTwo(iSeconds);
+           str2 = toTwo(iHours) + '' + toTwo(iMinutes) + toTwo(iSeconds);
+           //文字时间
+           Div1.innerHTML = str;
+           // 没有动画效果的图片时间
+           aImg[0].src = arrImg[str2.charAt(0)];
+           aImg[1].src = arrImg[str2.charAt(1)];
+           aImg[3].src = arrImg[str2.charAt(2)];
+           aImg[4].src = arrImg[str2.charAt(3)];
+           aImg[6].src = arrImg[str2.charAt(4)];
+           aImg[7].src = arrImg[str2.charAt(5)];
+       }
+       function toTwo(n) {
+           if(n<10) {
+               return '0' + n;
+           }else {
+           	   return n;
+           }
+       }
+	</script>
+</body>
+</html>

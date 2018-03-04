@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        p {
+            border:10px solid #ccc; 
+            background:#FFC; 
+            width:400px; 
+            padding:20px; 
+            font-size:16px; 
+            font-family:微软雅黑; 
+            margin:40px auto 0; 
+        }
+	</style>
+</head>
+<body>
+    <p>
+        <span>妙味课堂是一支独具特色的IT培训团队，妙味反对传统IT教育枯燥乏味的教学模式，妙味提供一种全新的快乐学习方法！<br />2013年底，妙味课堂最新推出“远程培训”服务，受到很多朋友们的喜爱与追捧，我们必将更加努力的帮助远程学习的朋友实现技术提升</span>……<a href="javascript:;">>>收缩</a></span>
+    </p>
+	<script>
+        // var str = '妙味课堂是一支独具特色的IT培训团队！';
+
+        //alert(str.substring(0, 2));
+
+        //alert(str.substring(2, 0)); //可以检测两个参数，大的扔后面，小的扔前面
+
+        //alert(str.substring(-3, 2));    //-3当做0处理
+
+        //alert(str.slice(2, 0));         //不交换位置
+        
+        //alert(str.slice(-2));           //从后面开始截取
+        
+        //alert(str.slice(-5, -2));         //培训团
+        
+
+        var oP = document.getElementsByTagName('p')[0],
+            oSpan = oP.getElementsByTagName('span')[0],
+            oA = oP.getElementsByTagName('a')[0],
+            str = oSpan.innerHTML;
+        
+        oA.onOff = true;
+
+        oA.onclick = function() {
+
+        	if(oA.onOff) {
+                
+                oSpan.innerHTML = str.substring(0, 18);
+
+                oA.innerHTML = '>>展开';
+
+                //oA.onOff = false;
+
+        	}else {
+
+                oSpan.innerHTML = str;
+
+                oA.innerHTML = '>>收缩';
+
+                //oA.onOff = true;
+        	}
+            
+            oA.onOff = !oA.onOff;
+            
+
+        }
+	</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      ul{
+      	padding: 0;
+      	margin: 2em 10%;
+      }
+      li{
+      	list-style: none;
+      }
+      .lis{
+      	position: relative;
+      	width: 80px;
+      	height: 30px;
+      	border: 1px solid #333;
+
+      }
+      .lis a {
+      	display: block;
+      	line-height: 30px;
+      	text-align: center;
+      	text-decoration: none;
+      	color: #000;
+      	background-color: #F1F1F1;
+      }
+      ul ul {
+      	display: none;
+      	position: absolute;
+      	top: 30px;
+      	left: -1px;
+      	padding: 0;
+      	margin: 0;
+      	width: 140px;
+      	border: 1px solid #333;
+      }
+      ul ul li {
+      	text-align: center;
+      	line-height: 30px;
+      	cursor: pointer;
+      }
+      ul ul li:hover {
+      	color: #FFF;
+      	background-color: gray;
+      }
+	</style>
+</head>
+<body>
+	<ul>
+		<li id='lis' class='lis'>
+          <a id='link' href="#">微博</a>
+          <ul id='ul1'>
+          	<li>私信</li>
+          	<li>评论</li>
+          	<li>@我</li>
+          </ul>
+		</li>
+	</ul>
+	<script>
+      var lis = document.getElementById('lis');
+      var ul1 = document.getElementById('ul1')
+      function show() {
+      	link.style.backgroundColor = 'orange';
+      	ul1.style.display = 'block';
+      }
+      function hide() {
+      	link.style.backgroundColor = '#F1F1F1'
+      	ul1.style.display = 'none';
+      }
+      lis.onmouseover = show;
+      lis.onmouseout = hide;
+	</script>
+</body>
+</html>

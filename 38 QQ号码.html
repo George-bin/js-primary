@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	请输入QQ号码：<input id="text" type="text" />
+    <input id="btn" type="button" value="判断" />
+    <script>
+       var oBtn = document.getElementById('btn');
+       var oTxt = document.getElementById('text');
+       oBtn.onclick = function() {
+       	  if(oTxt.value == '') {
+       	  	 alert('未输入任何内容');
+       	  }else if(Number(oTxt.value) != parseFloat(oTxt.value)) {
+       	  	 alert('请输入有效数字');
+       	  }else if(oTxt.value[0] == '0') {
+       	  	 alert('请输入有效证号,第一位不能为0');
+       	  }else if(oTxt.value.length<5 || oTxt.value.length>10) {
+       	  	 alert('输入证号个数不对，请重新输入');
+       	  }else if(oTxt.value.indexOf('.')) {
+       	  	 alert('不能含有小数点');
+       	  }
+       	}
+    </script>
+</body>
+</html>

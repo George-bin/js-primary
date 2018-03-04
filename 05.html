@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	padding: 0;
+       	margin: 0;
+       }
+       .content {
+       	margin: 2em 10%;
+       }
+       span {
+       	float: left;
+       	height: 38px;
+       }
+       .span1 {
+        border: 1px solid #ddd;
+        border-right: 0;
+       
+       }
+       span .txt {
+       	width: 480px;
+       	height: 38px;
+       	padding: 0 5px;
+       	border: 0;
+       }
+       span .btn {
+       	width: 80px;
+       	height: 40px;
+       	border: 0;
+       	font-size: 17px;
+       	letter-spacing: 2px;
+       	text-align: center;
+       	color: white;
+       	background-color: #38f;
+       	cursor: pointer;
+       }
+       span .btn:hover {
+       	background-color: #1062db;
+       }
+       p {
+        clear: both;
+       }
+	</style>
+</head>
+<body>
+    <div class="content">
+      <div class="search">
+        <span class="span1">
+          <input id="txt" class="txt" type="text" value="" placeholder="这里输入任意内容" /> 
+        </span>
+        <span class="span2">
+          <input id="btn" class="btn" type="button" value="按钮" />
+        </span>
+      </div>
+      
+      <p id="p1">这是一段文字~~~</p>
+    </div>
+	
+    <script>
+      var oTxt = document.getElementById('txt');
+      var oBtn = document.getElementById('btn');
+      var oP = document.getElementById('p1');
+      oBtn.onclick = function() {
+         oP.innerHTML = oTxt.value;
+         oTxt.value = '';
+      } 
+    </script>
+</body>
+</html>

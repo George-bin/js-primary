@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text">
+	<input type="button" value="按钮" />
+	<script>
+
+       var aInp = document.getElementsByTagName('input');
+       var str = '';
+       aInp[1].onclick = function() {
+           str = aInp[0].value;
+           if(isNaN(str)) {
+           	  alert(str+'不是数字');
+           }else {
+           	  alert(str+'是数字');
+           }
+       }
+	</script>
+</body>
+</html>

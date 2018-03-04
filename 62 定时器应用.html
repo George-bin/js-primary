@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	  padding: 0;
+       	  margin: 0;
+       }
+       #wrap {
+       	  position: relative;
+       	  width: 500px;
+       	  height: 300px;
+       	  margin: 40px auto;
+       	  padding: 7px;
+       	  border: 1px solid #ddd;
+       }
+       .son {
+       	  position: absolute; 
+       	  top: 50px;
+       	  left: 7px;
+       	  width: 100px;
+       	  height: 100px;
+       	  background: red;
+       }
+	</style>
+</head>
+<body>
+	<div id="wrap">
+       <input id="btn1" type="button" value="往后" />
+       <input id="btn2" type="button" value="往前" />
+
+       <div id="son" class="son"></div>
+	</div>
+	<script>
+       var oBtn1 = document.getElementById('btn1');
+       var oBtn2 = document.getElementById('btn2');
+       var oDiv =  document.getElementById('son');
+       oDiv.timer = null;
+       var speed;
+       oBtn2.onclick = function() {
+       	   clearInterval(oDiv.timer);
+           oDiv.timer = setInterval(function(){
+           	  speed = oDiv.style.left = parseInt(getStyle(oDiv,'left'))+10;
+           	  if(speed>500) {
+           	  	  speed = 500;
+           	  }
+           	  oDiv.style.left = speed+'px';
+           	  if(speed == 500) {
+           	  	  clearInterval(timer);
+           	  	  alert(speed);
+           	  }
+           },100)
+       	   
+       }
+       oBtn1.onclick = function() {
+       	   clearInterval(oDiv.timer);
+           oDiv.timer = setInterval(function(){
+           	  speed = oDiv.style.left = parseInt(getStyle(oDiv,'left'))-10;
+           	  if(speed<7) {
+           	  	  speed = 7;
+           	  }
+           	  oDiv.style.left = speed+'px';
+           	  if(speed == 7) {
+           	  	  clearInterval(timer);
+           	  	  alert(speed);
+           	  }
+           },100)
+       	   
+       }
+       function getStyle(obj,attr) {
+       	   return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+       }
+	</script>
+</body>
+</html>

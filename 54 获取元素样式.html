@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='js/JS.js'></script>
+	<style>
+       #div {
+       	width: 100px;
+       	height: 100px;
+       	background-color: red;
+       }
+	</style>
+</head>
+<body>
+	<input id="btn" type="button" value="按钮" />
+	<div id="div"></div>
+	<script>
+        $(function(){
+        	$('btn').onclick = function() {
+        		// alert($('div').style.width);
+        		// alert(getComputedStyle($('div')).width);
+        		//getComputedStyle()得到的是经过浏览器运算之后的样式 兼容性有问题
+        		// alert($('div').currentStyle.width);
+        		//兼容老版本IE 标准浏览器不兼容 
+        		alert(getStyle($('div'),'height'));
+        		alert(getStyle($('div'),'background'));
+        		//不要用来获取复合样式
+        		//background: url() ...    复合样式
+        		//backgroundColor          单一样式（不要用来做判断）
+        		
+        		//不要获取未设置后的样式
+        	};
+        });
+
+        function getStyle(obj,attr) {
+        	if(obj.currentStyle) {
+        		return obj.currentStyle[attr];
+        	}else {
+        		return getComputedStyle(obj)[attr];
+        	}
+        }
+	</script>
+</body>
+</html>

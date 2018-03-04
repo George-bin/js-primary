@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      * {
+      	margin: 0;
+      	padding: 0;
+      }
+      #content {
+      	width: 450px;
+      	border: 1px solid #ddd;
+      	padding: 10px;
+      	margin: 2em 10%;
+      }
+      form {
+      	float: right;
+      	margin-bottom: 10px;
+      }
+      input {
+      	width: 20px;
+      	height: 20px;
+      }
+      p {
+      	clear: both;
+      	text-indent: 2em;
+      }
+	</style>
+</head>
+<body>
+	<div id="content">
+	  <form action="">
+        <input id="subtract" type="button" value="-" />
+        <input id="and" type="button" value="+" />
+	  </form>
+      <p id="p1">《方案》指出，我国统一的企业职工基本养老保险制度建立以来，各项工作取得明显成效，对建立社会主义市场经济体制、维护改革发展稳定大局、保障企业离退休人员权益发挥了重要作用。同时，受多种因素影响，形成了一定的企业职工基本养老保险基金缺口。随着经济社会发展和人口老龄化加剧，基本养老保险基金支付压力不断加大。在推动国有企业深化改革的同时，通过划转部分国有资本充实社保基金，使全体人民共享国有企业发展成果，增进民生福祉，促进改革和完善基本养老保险制度，实现代际公平，增强制度的可持续性。
+      </p>
+	</div>
+	<script>
+      	var oSubtract = document.getElementById('subtract');
+      	var oAnd = document.getElementById('and');
+      	var oP = document.getElementById('p1');
+      	var num = 15;
+      	oSubtract.onclick = function() {
+           // num += 1;
+           num--; 
+           oP.style.fontSize = num + 'px';
+        }
+        oAnd.onclick = function() {
+           // num += 1;
+           num++; 
+           oP.style.fontSize = num + 'px';
+        }
+	</script>
+</body>
+</html>

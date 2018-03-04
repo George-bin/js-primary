@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+        var str = 'www.MIAOV.com';
+
+        //alert(str.toUpperCase());    //全部转换成大写
+
+        //alert(str.toLowerCase());    //全部转换成小写
+        
+        //alert(str.split('.'));         //以特定符号将字符串成数组；
+        
+        var arr = str.split('.');
+
+        alert(arr[1]);
+
+        var str1 = 'ming';
+
+        alert(str1.split(''));   //['m', 'i', 'n', 'g']
+
+        var str2 = '妙味课堂';
+
+        alert(str2.split('味'));
+
+        var str3 = 'http://www.miaov.com/';
+
+        alert(str3.split('/').length);   //http:,,www.miaov.com,
+
+        var str4 = '2018-1-4-16-21-35';
+
+        alert(str4.split('-', 3));
+	</script>
+</body>
+</html>

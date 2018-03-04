@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       *{
+       	padding: 0;
+       	margin: 0;
+       }
+       ul,li{
+       	list-style: none;
+       }
+       #content{
+       	width: 400px;
+       	margin: 20px auto 0;
+       	padding: 10px;
+       	border: 1px solid #ddd;
+       }
+       #content #list {
+       	margin-bottom: 10px;
+       }
+       #content input {
+       	width: 24px;
+       	height: 24px;
+       	cursor: pointer;
+       }
+       #content li {
+       	height: 30px;
+       	line-height: 30px;
+       }
+       #content p {
+       	height: 22px;
+       	line-height: 22px;
+       	font-size: 14px;
+       }
+	</style>
+</head>
+<body>
+	<div id="content">
+       <ul id="list">
+       	<li>
+          <input type="button" value="-" />
+          <strong>0</strong>
+          <input type="button" value="+" />
+          单价：<em>5元</em>
+          小计：<span>0</span>元
+       	</li>
+       	<li>
+          <input type="button" value="-" />
+          <strong>0</strong>
+          <input type="button" value="+" />
+          单价：<em>6元</em>
+          小计：<span>0</span>元
+       	</li>
+       	<li>
+          <input type="button" value="-" />
+          <strong>0</strong>
+          <input type="button" value="+" />
+          单价：<em>12.5元</em>
+          小计：<span>0</span>元
+       	</li>
+       	<li>
+          <input type="button" value="-" />
+          <strong>0</strong>
+          <input type="button" value="+" />
+          单价：<em>12.5元</em>
+          小计：<span>0</span>元
+       	</li>
+       </ul>
+       <p id="descrip1">商品合计共：<span>0</span>件，共花费了：<span>0</span>元</p>
+       <p id="descrip2">其中最贵的商品单价是：<span>0</span>元</p>
+	</div>
+  <script>
+    var oUl = document.getElementById('list');
+    var aLi = document.getElementsByTagName('li');
+    var oP1 = document.getElementById('descrip1');
+    var oP2 = document.getElementById('descrip2');
+    statistics();
+
+    function fnTab(oLi) {
+        var aBtn = oLi.getElementsByTagName('input');
+        var oStrong = oLi.getElementsByTagName('strong')[0];
+        var oEm = oLi.getElementsByTagName('em')[0];
+        var oSpan = oLi.getElementsByTagName('span')[0];
+        var n = oStrong.innerHTML;   //0
+        var price = parseFloat(oEm.innerHTML);   //12.5
+        aBtn[0].onclick = function() {
+            if(n>0) {
+                n--;
+            }
+            oStrong.innerHTML = n;
+            oSpan.innerHTML = n*price;
+            statistics();
+        }
+        aBtn[0].onclick = function() {
+            n++;
+            oStrong.innerHTML = n;
+            oSpan.innerHTML = n*price;
+            statistics();
+        }
+    }
+
+
+
+    function startistics() {
+        var aStrong = oUl.getElementsByTagName('strong');
+        var aSpan = oUl.getElementsByTagName('span');
+        var oTotal = oP1.getElementsByTagName('span')[0];
+        var oCost = oP2.getElementsByTagName('span')[1];
+        var oMax = oP2.getElementsByTagName('span')[0];
+        var aEm = [];
+        var total = 0;
+        var cost = 0;
+        for(var i=0;i<aLi.length;i++) {
+            total += parseFloat(aStrong[i].innerHTML);
+            cost += parseFloat(aSpan[i].innerHTML);
+            if(Number(strong[i].innerHTML)) {
+                aEm[aEm.length] = parseFloat(oul.getElementsByTagName('em')[i].innerHTML);
+            }
+        }
+        aEm.sort(function(a,b){ return b-a});
+        aEm[0] = aEm[0]?aEm[0]:0;
+        oTotal.innerHTML = total;
+        oCost.innerHTML = cost;
+        oMax.innerHTML = aEm[0];
+    }
+    
+  </script>
+	<!-- <script>
+      var oUl = document.getElementById('list');
+      var aLi = oUl.getElementsByTagName('li');
+      var aStrong = oUl.getElementsByTagName('strong');
+      var oP1 = document.getElementById('descrip1');
+      var oP2 = document.getElementById('descrip2');
+      var aSpan = oP1.getElementsByTagName('span');
+      var oNums = aSpan[0];
+      var oMoney = aSpan[1];
+      var oExpensive = oP2.getElementsByTagName('span')[0];
+      var allSpan = oUl.getElementsByTagName('span');
+      for(var i=0;i<aLi.length;i++) {
+      	fn(aLi[i]);
+      }
+      function fn(oLi) {
+          var aBtn = oLi.getElementsByTagName('input');
+          var oStrong = oLi.getElementsByTagName('strong')[0];
+          var oEm = oLi.getElementsByTagName('em')[0];
+          var oSpan = oLi.getElementsByTagName('span')[0];
+          var n1 = Number(oStrong.innerHTML);
+          var n2 = parseFloat(oEm.innerHTML);
+          var n3 = Number(oNums.innerHTML);
+          var n4 = parseFloat(oMoney.innerHTML);
+          var n5 = [];
+          aBtn[0].onclick = function() {
+              n1 -= 1;
+              n3 = 0;
+              n4 = 0;
+              n5 = [];
+              if(n1<0) {
+              	n1 = 0
+              }
+              oStrong.innerHTML = n1;
+              oSpan.innerHTML = n1*n2;
+              for(var i=0;i<aStrong.length;i++) {
+              	n3 += Number(aStrong[i].innerHTML);
+              }
+              oNums.innerHTML = n3;
+              for(var i=0;i<allSpan.length;i++) {
+              	n4 += parseFloat(allSpan[i].innerHTML);
+              }
+              oMoney.innerHTML = n4;
+              for(var i=0;i<aStrong.length;i++) {
+              	if(Number(aStrong[i].innerHTML) != 0) {
+                    n5.push(parseFloat(allSpan[i].innerHTML)/Number(aStrong[i].innerHTML));	
+              	}	
+              }
+              oExpensive.innerHTML = Math.max.apply(Math,n5);
+
+
+          }
+          aBtn[1].onclick = function() {
+              n1 += 1;
+              n3 = 0;
+              n4 = 0;
+              n5 = [];
+              oStrong.innerHTML = n1;
+              oSpan.innerHTML = n1*n2;
+              for(var i=0;i<aStrong.length;i++) {
+              	n3 += Number(aStrong[i].innerHTML);
+              }
+              oNums.innerHTML = n3;
+              for(var i=0;i<allSpan.length;i++) {
+              	n4 += parseFloat(allSpan[i].innerHTML);
+              }
+              oMoney.innerHTML = n4;
+              for(var i=0;i<aStrong.length;i++) {
+              	if(Number(aStrong[i].innerHTML) != 0) {
+                    n5.push(parseFloat(allSpan[i].innerHTML)/Number(aStrong[i].innerHTML));	
+              	}	
+              }
+              oExpensive.innerHTML = Math.max.apply(Math,n5);
+          }
+      }
+
+	</script> -->
+</body>
+</html>

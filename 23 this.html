@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="btn1" type="button" value="按钮" />
+	<script>
+       var oBtn = document.getElementById('btn1');
+       function fn1() {
+       	alert(this);
+       }
+       oBtn.onclick = function() {
+       	fn1();
+       }
+	</script>
+</body>
+</html>

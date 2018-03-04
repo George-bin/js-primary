@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+       //getFullYear() 获取年
+       //getMonth() 获取月  月份0-11
+       //getDate()  获取日
+       //getHours()  获取日
+       //getMinutes() 获取分
+       //getSeconds()  获取秒
+       fnTime();
+
+       setInterval(fnTime,1000);
+
+       function fnTime() {
+       	   var myTime = new Date();
+
+	       //number
+	       var iYear = myTime.getFullYear();
+	       var iMonth = myTime.getMonth()+1;
+	       var iDate = myTime.getDate();
+	       var iWeek = myTime.getDay();
+	       var iHours = myTime.getHours();
+	       var iMin = myTime.getMinutes();
+	       var iSec = myTime.getSeconds();
+	       switch(iWeek) {
+	       	   case 0:
+	       	      iWeek = '星期一';
+	       	      break;
+	       	   case 1:
+	       	      iWeek = '星期二';
+	       	      break;
+	       	   case 2:
+	       	      iWeek = '星期三';
+	       	      break;
+	       	   case 3:
+	       	      iWeek = '星期四';
+	       	      break;
+	       	   case 4:
+	       	      iWeek = '星期五';
+	       	      break;
+	       	   case 5:
+	       	      iWeek = '星期六';
+	       	      break;
+	       	   case 6:
+	       	      iWeek = '星期天';
+	       	      break;
+	       }
+	       var str = iYear +'年'+ iMonth +'月'+ iDate +'日 '+ iWeek +' '+ toTwo(iHours) +':'+ toTwo(iMin)+':'+toTwo(iSec);
+	       document.body.innerHTML = str;
+       }
+
+       function toTwo(n) {
+       	   if(n<10) {
+       	   	   return '0'+n;
+       	   }else {
+       	   	   return ''+n;
+       	   }
+       }
+       
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="0" />
+	<input type="button" value="0" />
+	<input type="button" value="0" />
+	<script>
+        var aBtn = document.getElementsByTagName('input');
+        var arr = ['A','B','C','D'];
+        for(var i=0;i<aBtn.length;i++) {
+        	aBtn[i].num = 0;
+        	aBtn[i].onclick = function() {
+        		// alert(arr[this.num]);
+        		this.value = arr[this.num];
+        		this.num++;
+        		if(this.num === arr.length) {
+        			this.num = 0;
+        		}
+        	}
+        }
+	</script>
+</body>
+</html>

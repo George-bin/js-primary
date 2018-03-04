@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+        var json = {
+        	'name': '妙味课堂',
+        	'age': 3,
+        	'fun': '前端开发'
+        }
+
+        for(var attr in json) {
+
+            //alert(attr);  //属性名称 —— name,  age,   fun
+             
+            //alert(json[attr]);  //属性值 —— 妙味课堂,   3,    前端开发
+            
+            //alert(json['attr']);  //访问某个属性 —— undefined
+
+        }
+
+        var json2 = {
+
+        	url: ['images/1.png', 'images/2.png', 'images/3.png', 'images/4.png'],
+
+        	txt: ['小宠物', '图片二', '图片三', '面具']
+
+        }
+
+        // for(var attr in json2) {
+
+        // 	for(var i=0; i<json2[attr].length; i++) {
+
+        // 		alert(json2[attr][i]);
+
+        // 	}
+        // }
+        
+        var arr = [{'name':'TM', 'age':23}, {'name':'george', 'age':22}];
+
+        for(var i=0; i<arr.length; i++) {
+
+        	for(var attr in arr[i]) {
+
+        		alert(arr[i][attr]);
+
+        	}
+        }
+	</script>
+</body>
+</html>

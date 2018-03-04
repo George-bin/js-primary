@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       body * {
+       	padding: 0;
+       	margin: 0;
+       	font-size: 14px;
+       }
+       ul,li {
+       	list-style: none;
+       }
+       a {
+       	text-decoration: none;
+       	color: #333;
+       }
+       #content {
+        width: 340px;
+        margin: 40px auto;
+        background-color: #bacbdd;
+       }
+       #content h2 {
+       	height: 37px;
+       	line-height: 37px;
+       	margin-bottom: 7px;
+       	font-size: 17px;
+       	font-weight: normal;
+       	text-indent: 27px;
+       	color: white;
+       	background-color: #ff4a15;
+       }
+       #content ul {
+       	width: 300px;
+       	margin: 0 auto;
+       }
+       #content li {
+       	position: relative;
+       	padding: 5px 0 5px 12px;
+       	border-bottom: 1px solid white;
+       	overflow: hidden;
+        /*text-overflow:ellipsis;*/  /*溢出用省略号表示*/
+        /*white-space:nowrap;*/    /*溢出不换行*/
+        cursor: pointer;
+       }
+       #content .show {
+       	height: 34px;
+       	line-height: 34px;
+       }
+       #content .show span,#content .hide .num {
+       	display: inline-block;
+       	width: 20px;
+       	height: 24px;
+       	line-height: 24px;
+       	margin-right: 7px;
+       	text-align: center;
+       	color: white;
+       	background-color: #ff4a15;
+       }
+       #content .show a:hover {
+       	color: red;
+       }
+       #content .more {
+       	float: right;
+       	height: 30px;
+       	line-height: 30px;
+       	margin-right: 7px;
+       }
+       #content .more:hover {
+       	color: #ff4a15;
+       	cursor: pointer;
+       }
+       #content .hide .num { float: left; }
+       #content .hide { display: none; }
+       #content .hide .pic {
+       	float: left;
+       	width: 150px;
+       	height: 100px;
+       	margin-right: 5px;
+       }
+       #content .hide a {
+        position: absolute;
+        right: 5px;
+        bottom: 0px;
+       }
+       #content .hide .play {
+       	width: 40px;
+       	height: 40px;
+       }
+       .clearfix { *zoom:1; }
+       .clearfix:after {
+       	clear: both;
+       	content: "";
+       	display: block;
+       	height: 0;
+       	visibility: hidden;
+       }
+	</style>
+</head>
+<body>
+	<div id="content">
+      <h2>观看排行榜</h2>
+      <ul id="list">
+      	<li>
+          <div class="show">
+             <span>1</span>
+             <a href="#">解密：关于地球与人类的一千零一问...</a>
+          </div>
+          <div class="hide">
+             <span class="num">1</span>
+             <img class="pic" src="images/new1.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+          
+      	</li>
+      	<li>
+          <div class="show">
+             <span>2</span>
+             <a href="#">经典传奇：探索全世界重大历史事件...</a>
+          </div>
+          <div class="hide">
+             <span class="num">2</span>
+             <img class="pic" src="images/new2.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+          
+      	</li>
+      	<li>
+          <div class="show">
+             <span>3</span>
+             <a href="#">眼界：展现普通人的曲折命运和动人事件...</a>
+          </div>
+          <div class="hide">
+             <span class="num">3</span>
+             <img class="pic" src="images/new3.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+
+      	</li>
+      	<li>
+          <div class="show">
+             <span>4</span>
+             <a href="#">档案《BTV》惊人事件和传奇背后的故事...</a>
+          </div>
+          <div class="hide">
+             <span class="num">4</span>
+             <img class="pic" src="images/new4.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+      	</li>
+      	<li>
+          <div class="show">
+             <span>5</span>
+             <a href="#">世纪十最：30个震惊事件的Top...</a>
+          </div>
+          <div class="hide">
+             <span class="num">5</span>
+             <img class="pic" src="images/new5.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+      	</li>
+      	<li>
+          <div class="show">
+             <span>6</span>
+             <a href="#">身边的毛泽东：警卫员解密毛泽东秘密...</a>
+          </div>
+          <div class="hide">
+             <span class="num">6</span>
+             <img class="pic" src="images/new6.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+      	</li>
+      	<li>
+          <div class="show">
+             <span>7</span>
+             <a href="#">新电影传奇：每一部电影都有自己的风格...</a>
+          </div>
+          <div class="hide">
+             <span class="num">7</span>
+             <img class="pic" src="images/new7.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+      	</li>
+      	<li>
+          <div class="show">
+             <span>8</span>
+             <a href="#">档案《上视纪实频道》解密档案中不可告...</a>
+          </div>
+          <div class="hide">
+             <span class="num">8</span>
+             <img class="pic" src="images/new8.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+      	</li>
+      	<li>
+          <div class="show">
+             <span>9</span>
+             <a href="#">探寻传世国宝的千古传奇...</a>
+          </div>
+          <div class="hide">
+             <span class="num">9</span>
+             <img class="pic" src="images/new9.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+      	</li>
+      	<li>
+          <div class="show">
+             <span>10</span>
+             <a href="#">纪实系列：讲述社会百态，透视事实...</a>
+          </div>
+          <div class="hide">
+             <span class="num">10</span>
+             <img class="pic" src="images/new10.jpg" alt="">
+             <span>解密：关于地球与人类的一千零一问...</span>
+             <a href="#"><img class="play" src="images/play.png" alt=""></a>
+             <div class="clearfix"></div>
+          </div>
+      	</li>
+      </ul>
+      <span class="more">更多>></span>
+      <div class="clearfix"></div>
+	</div>
+	<script>
+       var oUl = document.getElementById('list');
+       var aLi = oUl.getElementsByTagName('li');
+       function fn(oLi) {
+       	   var oShow = oLi.getElementsByTagName('div')[0];
+	       var oHide = oLi.getElementsByTagName('div')[1];
+	       oLi.onmouseover = function() {
+	         oShow.style.display = 'none';
+	         oHide.style.display = 'block';
+	         oLi.style.backgroundColor = 'white';
+	       }
+	       oLi.onmouseout = function() {
+	         oShow.style.display = 'block';
+	         oHide.style.display = 'none';
+	         oLi.style.backgroundColor = '';
+	       }
+       }
+       //调用函数
+       for(var i=0;i<aLi.length;i++) {
+       	fn(aLi[i]);
+       }
+       
+	</script>
+</body>
+</html>

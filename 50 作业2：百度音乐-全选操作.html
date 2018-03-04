@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	  padding: 0;
+       	  margin: 0;
+       }
+       body {
+       	  font-size: 13px;
+       }
+       ul li {
+       	  list-style: none;
+       }
+       #wrap {
+       	  width: 300px;
+       	  margin: 40px auto;
+       	  background-color: #eeeeee;
+       }
+       label {
+       	   cursor: pointer;
+       }
+       h2 {
+       	   width: 300px;
+       	   height: 27px;
+       	   line-height: 27px;
+       	   font-size: 13px;
+       	   font-weight: none;
+       	   text-indent: 17px;
+       	   color: white;
+       	   background-color: #3385ff;
+       }
+       #list li {
+       	   height: 30px;
+       	   line-height: 30px;
+       	   text-indent: 17px;
+       }
+       /*#list li:hover {
+       	   background-color: white;
+       }*/
+       #list li input {
+       	   vertical-align: text-bottom;
+       	   margin-bottom: 2px;
+       }
+       #list .name {
+       	   float: right;
+       	   margin-right: 17px;
+
+       }
+       .onoff {
+       	   height: 40px;
+       	   line-height: 40px;
+       	   text-indent: 17px;
+       	   border-bottom: 2px solid #ddd;
+           background-color: white;
+       }
+       .onoff input {
+       	   vertical-align: text-bottom;
+       	   margin-bottom: 1px;
+       }
+	</style>
+</head>
+<body>
+	<div id="wrap">
+	   <h2>百度音乐</h2>
+	   <ul id="list">
+	   	<li style="background-color: rgb(247,255,255);">
+          <input type="checkbox" id="inp1" />
+          <label for="inp1">私奔</label>
+          <span class="name">梁博</span>
+	   	</li>
+	   	<li style="background-color: rgb(255,255,255);">
+          <input type="checkbox" id="inp2" />
+          <label for="inp2">北京北京</label>
+          <span class="name">梁博、黄勇</span>
+	   	</li>
+	   	<li style="background-color: rgb(247,255,255);">
+          <input type="checkbox" id="inp3" />
+          <label for="inp3">我爱你中国</label>
+          <span class="name">汪峰</span>
+	   	</li>
+	   	<li style="background-color: rgb(255,255,255);">
+          <input type="checkbox" id="inp4" />
+          <label for="inp4">花火</label>
+          <span class="name">梁博</span>
+	   	</li>
+	   	<li style="background-color: rgb(247,255,255);">
+          <input type="checkbox" id="inp5" />
+          <label for="inp5">回来</label>
+          <span class="name">梁静茹</span>
+	   	</li>
+	   	<li style="background-color: rgb(255,255,255);">
+           <input type="checkbox" id="inp6" />
+           <label for="inp6">爱要有你才完美</label>
+           <span class="name">那英</span>
+	   	</li>
+	   </ul>
+       <p class="onoff">
+           <input type="checkbox" id="inp7" />
+           <label for="inp7">全选</label>
+       </p>
+	</div>
+	<script>
+       var oList = document.getElementById('list');
+       var aLi = oList.getElementsByTagName('li');
+       var aCheckbox = oList.getElementsByTagName('input');
+       var oBtn = document.getElementById('inp7');
+       var backColors = [];
+       var num;
+       var flag = 0;
+       //设置各行底色变化
+       for(var row=0;row<aLi.length;row++) {
+       	  if(row%2){
+       	  	 aLi[row].style.backgroundColor = "#FFF";
+       	  }else {
+       	  	 aLi[row].style.backgroundColor = "#F7FFFF";
+       	  }
+       	  backColors[row] = aLi[row].style.backgroundColor;
+       }
+       for(var i=0;i<aCheckbox.length;i++) {
+       	  aCheckbox[i].index = i;
+       	  aCheckbox[i].onclick = function() {
+              num = this.index;
+              flag = 0;
+              for(var i=0;i<aCheckbox.length;i++) {
+              	  flag += Number(aCheckbox[i].checked);
+              }
+              if(flag == aCheckbox.length) {
+              	  oBtn.checked = true;
+              }else {
+              	  oBtn.checked = false;
+              }
+              if(this.checked) {
+              	  aLi[num].style.backgroundColor = '#eee';
+              }else {
+              	  aLi[num].style.backgroundColor = backColors[num];
+              }
+       	  }
+       }
+       // 鼠标移入移出事件
+       for(var i=0;i<aLi.length;i++) {
+       	  aLi[i].index = i;
+       	  aLi[i].onmouseover = function() {
+       	  	 this.style.backgroundColor = "#eee";
+       	  }
+       	  aLi[i].onmouseout = function() {
+       	  	 if(!aCheckbox[this.index].checked) {
+       	  	 	 this.style.backgroundColor = backColors[this.index];
+       	  	 }
+       	  }
+       }
+   	   oBtn.onclick = function() {
+   	   	  if(!this.checked){
+   	   	  	for(var i=0;i<aCheckbox.length;i++) {
+   	   	  	   aCheckbox[i].checked = false;
+       	  	   aLi[i].style.backgroundColor = backColors[i];
+             }
+       	   }else {
+       	   	 for(var i=0;i<aCheckbox.length;i++) {
+   	   	  	   aCheckbox[i].checked = true;
+       	  	   aLi[i].style.backgroundColor = '#eee';
+             }
+   	   	   }
+       	  
+       }
+
+       
+	</script>
+</body>
+</html>

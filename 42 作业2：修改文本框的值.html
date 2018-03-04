@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      * {
+      	padding: 0;
+      	margin: 0;
+      }
+      body {
+      	font-size: 14px;
+      }
+      ul,li {
+      	list-style: none;
+      }
+      a {
+      	text-decoration: none;
+      	color: #333;
+      }
+      input {
+      	margin-right: 7px;
+      }
+      #content {
+      	width: 300px;
+      	margin: 20px auto 0;
+      }
+      #content h2 {
+      	height: 30px;
+      	line-height: 30px;
+      	font-size: 18px;
+      	text-indent: 17px;
+        color: white;
+        background-color: #3385ff;
+      }
+      #list {
+      	width: 300px;
+      }
+      #list li {
+      	padding-left: 17px;
+      	border: 1px solid #3385ff;
+      	border-top: 0;
+      	line-height: 30px;
+      }
+      .show,.hide {
+      	height: 40px;
+      	line-height: 40px;
+      }
+      .hide {
+      	display: none;
+      }
+      .hide input{ background: #fff; border: 1px solid #ccc; height: 20px; line-height: 20px; padding: 2px 5px; /*outline: none;*/ /*用于设置元素的整个轮廓的样式。样式不能是 none，否则轮廓不会出现。*/}
+      .hide a{ background: #999; color: #fff; padding: 5px 6px; border-radius: 2px;}
+      .hide a.cancel{ background: #aaa; -webkit-transition: all .3s; transition: all .3s;}
+      .hide a.save{ background: #22ac38; -webkit-transition: all .3s; transition: all .3s;}
+      .hide a.cancel:hover{ background: #999;}
+      .hide a.save:hover{ background: #19952e;}
+	</style>
+</head>
+<body>
+	<div id="content">
+      <h2>课程分类</h2>
+      <ul id="list">
+      	<li>
+      	  <div class="show">
+             <span>妙味远程课堂</span>
+      	     <a href="#">编辑</a>
+      	  </div>
+      	  <div class="hide">
+             <input type="text" value="" />
+      	     <a class="save" href="#">保存</a>
+      	     <a class="cancel" href="#">取消</a>
+      	  </div>
+      	</li>
+      	<li>
+      	  <div class="show">
+             <span>妙味实体课堂</span>
+      	     <a href="#">编辑</a>
+      	  </div>
+          <div class="hide">
+             <input type="text" value="" />
+      	     <a class="save" href="#">保存</a>
+      	     <a class="cancel" href="#">取消</a>
+      	  </div>
+      	</li>
+      </ul>
+	</div>
+	<script>
+      var oUl = document.getElementById('list');
+      var aLi = oUl.getElementsByTagName('li');
+      for(var i=0;i<aLi.length;i++) {
+      	fn(aLi[i]);
+      }
+      //函数传参
+      function fn(oLi) {
+      	var aDiv = oLi.getElementsByTagName('div');
+      	var oSpan = oLi.getElementsByTagName('span')[0];
+      	var aA = oLi.getElementsByTagName('a');
+      	var oInput = oLi.getElementsByTagName('input')[0];
+        
+        // 点击编辑
+        aA[0].onclick = function() {
+        	aDiv[0].style.display = 'none';
+        	aDiv[1].style.display = 'block';
+        	oInput.focus();
+        	oInput.value = oSpan.innerHTML;
+        }
+
+        //点击保存
+        aA[1].onclick = function() {
+        	aDiv[0].style.display = 'block';
+        	aDiv[1].style.display = 'none';
+        	oSpan.innerHTML = oInput.value;
+        }
+      	
+      	 //点击取消
+        aA[2].onclick = function() {
+        	aDiv[0].style.display = 'block';
+        	aDiv[1].style.display = 'none';
+        }
+      }
+	</script>
+</body>
+</html>

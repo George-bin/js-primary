@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+        var arr = ['c', 'a', 'd', 'b'];
+
+        //arr.sort();    //根据编码顺序进行排序
+
+        //alert(arr);
+        
+        var arr2 = [4, 5, 31, 78, 1, 0, 99];
+
+        arr2.sort(function(num1, num2) {
+        	return num2 - num1;   //从大到小
+
+        	//return num1 - num2;  //从小到大
+        });
+
+        alert(arr2);
+
+        var arr3 = ['500px', '23px', '1000px', '10px'];
+
+        arr3.sort(function(num1, num2) {
+
+        	return parseInt(num1) - parseInt(num2);
+
+        });
+
+        alert(arr3);
+
+        function compare(num1, num2) {
+
+        	if(num1 > num2) {
+
+        		return 1;
+
+        	}else if(num1 < num2) {
+
+        		return -1;
+
+        	}else {
+
+        		return 0;
+
+        	}
+        }
+	</script>
+</body>
+</html>

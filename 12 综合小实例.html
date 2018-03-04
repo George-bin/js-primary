@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	   * {
+	   	margin: 0;
+	   	padding: 0;
+	   }
+	   .img {
+	   	width: 400px;
+	   	height: 600px;
+	   }
+       #content {
+       	position: relative;
+       	width: 400px;
+       	height: 600px;
+       	border: 10px solid #ccc;
+       	margin: 40px auto 0;
+       }
+       #content a {
+       	position: absolute;
+       	top: 300px;
+       	width: 40px;
+       	height: 40px;
+       	line-height: 40px;
+       	border: 5px solid white;
+       	font-size: 20px;
+       	text-align: center;
+       	text-decoration: none;
+       	color: white;
+       	background: #000;
+       	opacity: 0.5;
+       	filter: alpha(opacity = 50);
+       }
+       #content a:hover {
+       	opacity: 0.7;
+       	filter: alpha(opacity = 70);
+       }
+       #prev {left: 7px;}
+       #next {right:7px;}
+       #text {
+       	position: absolute;
+       	bottom: 0;
+       	left: 0;
+       	width: 400px;
+       	height: 30px;
+       	line-height: 30px;
+       	text-align: center;
+       	color: white;
+       	background: #000;
+       	opacity: 0.6;
+       	filter: alpha(opacity = 60);
+       }
+       #span1 {
+       	position: absolute;
+       	top: 0;
+       	left: 0;
+       	width: 400px;
+       	height: 30px;
+       	line-height: 30px;
+       	text-align: center;
+       	color: white;
+       	background: #000;
+       	opacity: 0.6;
+       	filter: alpha(opacity = 60);
+       }
+	</style>
+</head>
+<body>
+	<div id="content">
+      <a id="prev" href="javascript:;">&lt;</a>
+      <a id="next" href="javascript:;">&gt;</a>
+      <p id="text">这是第一张图片</p>
+      
+      <img id="img1" src="images/00.jpg" alt="二次元">
+      <span id="span1">数量正在计算中...</span>
+	</div>
+	<script>
+      var oPrev = document.getElementById('prev');
+      var oNext = document.getElementById('next');
+      var oText = document.getElementById('text');
+      var oSpan = document.getElementById('span1');
+      var oImg = document.getElementById('img1');
+
+      var arrUrl = ['images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg'];
+      var arrText = ['二次元-吊袜带','二次元-的佛挡杀佛','二次元-大的风','二次元-的撒旦法'];
+      var num = 0;
+      // 初始化
+      function fnTab() {
+      	oSpan.innerHTML = num + 1 +  '/'  + arrText.length;
+        oImg.src = arrUrl[num];
+        oText.innerHTML = arrText[num];
+      }
+      fnTab();
+      
+
+      oNext.onclick = function() {
+      	num++;
+      	if(num == arrText.length) {
+          num = 0;
+      	}
+      	fnTab();
+      }
+      oPrev.onclick = function() {
+      	num--;
+      	if(num == -1) {
+      		num = arrText.length-1;
+      	}
+      	fnTab();
+      }
+	</script>
+</body>
+</html>

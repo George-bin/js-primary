@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+      * {
+         padding: 0;
+         margin: 0;
+      }
+      span {
+      	cursor: pointer;
+      }
+      input {
+      	cursor: pointer;
+      }
+      .content {
+      	position: relative;
+      	margin: 2em 10%;
+      }
+      .content>p {
+      	height: 30px;
+      	margin-bottom: 10px;
+      	line-height: 30px;
+      	font-size: 24px;
+      }
+      .content>p strong {
+      	float: left;
+      }
+      .content .set {
+      	float: left;
+      	padding: 0 5px;
+      	line-height: 30px;
+      	border: 0;
+        font-size: 16px;
+        color: white;
+        background-color: red;
+        cursor: pointer;
+      }
+      .content .show-box {
+      	width: 100px;
+      	height: 100px;
+      	border: 3px solid #000;
+      }
+      .content .shade {
+      	display: none;
+      	position: fixed;
+      	top: 0;
+      	left: 0;
+      	width: 9999px;
+      	height: 9999px;
+      	background-color: gray;
+      	opacity: 0.3;
+      	filter: alpha(opacity=30);
+      }
+      .content .hide-box {
+      	display: none;
+      	position: absolute;
+      	top: 200px;
+      	left: 500px;
+      	width: 280px;
+      	height: 200px;
+      	border: 15px solid #e4e4e4;
+      	font-size: 14px;
+      	background-color: white;
+      }
+      .content .hide-box div {
+      	line-height: 40px;
+      }
+      .content .hide-box .left {
+      	float: left;
+      	width: 130px;
+      	height: 40px;
+      	text-align: right;
+      }
+      .content .hide-box .right {
+      	float: left;
+      }
+      .content .samll-box {
+        display: inline-block;
+        width: 38px;
+        height: 38px;
+        border: 1px solid gray;
+        text-align: center;
+      }
+      .hide-box .list {
+      	height: 40px;
+      	margin-top: 7px;
+      }
+      .hide-box .colors .samll-box {
+      	width: 40px;
+      	height: 40px;
+      	border: 0;
+      }
+      .hide-box .list .red {
+      	color: white;
+      	background-color: orange;
+      }
+      .hide-box .list .red:hover {
+      	background-color: red;
+      }
+      .hide-box .list .yellow {
+      	color: white;
+      	background-color: orange;
+      }
+      .hide-box .list .yellow:hover {
+      	background-color: yellow;
+      }
+      .hide-box .list .blue {
+      	color: white;
+      	background-color: orange;
+      }
+      .hide-box .list .blue:hover {
+      	background-color: blue;
+      }
+      .hide-box .num .samll-box:hover {
+        color: white;
+        background-color: orange;
+      }
+      .hide-box .btn {
+      	clear: both;
+      	margin-top: 15px;
+      	text-align: center;
+      }
+      .hide-box .btn input {
+      	width: 60px;
+      	height:30px;
+      	line-height: 30px;
+      	border: 0;
+      	color: white;
+      	background-color: #104ca6;
+      }
+	</style>
+</head>
+<body>
+	<div class="content">
+       <p>
+         <strong>请为下面DIV设置样式：</strong>
+         <input id="set" class="set" type="button" value="点击设置" />
+       </p>
+       <div id="show-box" class="show-box"></div>
+       <div id="shade" class="shade"></div>
+       <div id="hide-box" class="hide-box">
+         <div class="list colors">
+           <span class="left">请选择背景颜色：</span>
+           <div class="right">
+             <span id="red" class="samll-box red">红</span>
+             <span id="yellow" class="samll-box yellow">黄</span>
+             <span id="blue" class="samll-box blue">蓝</span>
+           </div>
+         </div>
+         <div class="list num">
+           <span class="left">请选择宽（px）：</span>
+           <div class="right">
+              <span id="w2" class="samll-box">200</span>
+              <span id="w3" class="samll-box">300</span>
+              <span id="w4" class="samll-box">400</span>
+           </div>
+         </div>
+         <div class="list num">
+           <span class="left">请选择高（px）：</span>
+           <div class="right">
+              <span id="h2" class="samll-box">200</span>
+              <span id="h3" class="samll-box">300</span>
+              <span id="h4" class="samll-box">400</span>
+           </div>
+         </div>
+         <p class="btn">
+           <input id="recover" type="button" value="恢复" />
+           <input id="confirm" type="button" value="确定">
+         </p>
+       </div>
+	</div>
+	<script>
+       var set = document.getElementById('set');
+       var hide_box = document.getElementById('hide-box');
+       var shade = document.getElementById('shade');
+       set.onclick = function() {
+       	shade.style.display = 'block';
+       	hide_box.style.display = 'block';
+       }
+       var show_box = document.getElementById('show-box');
+       var red = document.getElementById('red');
+       var yellow = document.getElementById('yellow');
+       var blue = document.getElementById('blue');
+       red.onclick = function() {
+       	show_box.style.backgroundColor = 'red';
+       }
+       yellow.onclick = function() {
+       	show_box.style.backgroundColor = 'yellow';
+       }
+       blue.onclick = function() {
+       	show_box.style.backgroundColor = 'blue';
+       }
+       var w2 = document.getElementById('w2');
+       var w3 = document.getElementById('w3');
+       var w4 = document.getElementById('w4');
+       w2.onclick = function() {
+       	show_box.style.width = '200px';
+       }
+       w3.onclick = function() {
+       	show_box.style.width = '300px';
+       }
+       w4.onclick = function() {
+       	show_box.style.width = '400px';
+       }
+       var h2 = document.getElementById('h2');
+       var h3 = document.getElementById('h3');
+       var h4 = document.getElementById('h4');
+       h2.onclick = function() {
+       	show_box.style.height = '200px';
+       }
+       h3.onclick = function() {
+       	show_box.style.height = '300px';
+       }
+       h4.onclick = function() {
+       	show_box.style.height= '400px';
+       }
+       var recover = document.getElementById('recover');
+       var confirm = document.getElementById('confirm');
+       confirm.onclick = function() {
+       	shade.style.display = 'none';
+       	hide_box.style.display = 'none';
+       }
+       recover.onclick = function() {
+       	show_box.style.width = '100px';
+       	show_box.style.height = '100px';
+       	show_box.style.backgroundColor = 'white';
+       }
+
+	</script>
+</body>
+</html>

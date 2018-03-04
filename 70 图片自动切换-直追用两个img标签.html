@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	  padding: 0;
+       	  margin: 0;
+       }
+       img {
+       	  border: 0;
+       	  width: 500px;
+       	  height: 300px;
+       }
+       li { list-style: none; }
+       #showbox {
+       	  position:relative; 
+       	  width: 500px;
+       	  height: 300px;
+       	  border: 5px solid #eee;
+       	  margin: 50px auto;
+       	  overflow: hidden;
+       }
+       #wrap {
+       	  position: absolute;
+       	  top: 0;
+       	  left: 0;
+       	  width: 500px;
+       	  height: 300px;
+       	  font-size: 0;
+       }
+       #prev,#next {
+       	  position: absolute;
+       	  top: 120px;
+       	  display: block;
+       	  width: 40px;
+       	  height: 40px;
+       	  line-height: 40px;
+       	  font-size: 30px;
+       	  text-align: center;
+       	  color: #FFF;
+       	  background: #000;
+       	  border-radius: 20px;
+       	  opacity: 0.6;
+       	  cursor: pointer;
+       }
+       #prev { left: 10px; }
+       #next { right: 10px; }
+       #bullets li { 
+       	  display: inline-block; 
+       	  width: 20px; 
+       	  height: 20px; 
+       	  background: #fff; 
+       	  border-radius: 20px; 
+       	  opacity: 0.6; 
+       	  cursor: pointer; 
+       }
+	   #bullets { 
+	   	  position: absolute; 
+	   	  bottom: 5px;
+	   	  left: 200px;
+	   	  width: 600px; 
+	   }
+	</style>
+</head>
+<body>
+	<div id="showbox">
+       <div id="wrap">
+          <img src="" alt="" />
+          <img src="" alt="" />
+       </div>
+       <span id="prev">&lt;</span>
+       <span id="next">&gt;</span>
+       <ul id="bullets">
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+       </ul>
+	</div>
+	<script>
+       function getStyle(obj,attr) {
+       	   return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+       }
+       function move(obj,attr,distance,step,frequency,endFn) {
+       	   if(!obj.moved) { return; }
+       	   var startVal = parseInt(getStyle(obj,attr));
+       	   var times = 0;
+       	   obj.moved = false;
+       	   step = distance>0?step:-step;
+       	   clearInterval(obj.move);
+       	   obj.move = setInterval(function() {
+       	   	   obj.style[attr] = parseInt(getStyle(obj,attr))+step+'px';
+       	   	   times++;
+       	   	   if(Math.abs(step*times)>Math.abs(distance)) {
+       	   	   	   clearInterval(obj.move);
+       	   	   	   obj.style[attr] = startVal+distance+'px';
+       	   	   	   obj.move = true;
+       	   	   	   endFn && endFn();
+       	   	   }
+       	   },frequency)
+       }
+
+       var oShowbox = document.getElementById('showbox'),
+           oWrap = document.getElementById('wrap'),
+           oPrev = document.getElementById('prev'),
+           oNext = document.getElementById('next'),
+           oBullets = document.getElementById('bullets'),
+           aLi = oBullets.getElementsByTagName('li'),
+           aImg = oWrap.getElementsByTagName('img'),
+           arrImg = ['images/zu1-41.jpg','images/zu1-42.jpg','images/zu1-43.jpg','images/zu1-44.jpg'],
+           timer = null,
+           num = 0;
+           oWrap.moved = true;
+       oPrev.onmouseover = function() {
+       	   this.style.transform = 'scale(1.5)';
+       	   this.style.background = '#fff';
+       	   this.style.color = '#000';
+       }
+       oPrev.onmouseout = function() {
+       	   this.style.transform = 'scale(1)';
+       	   this.style.background = '#000';
+       	   this.style.color = '#fff';
+       }
+       oNext.onmouseover = function(){
+		   this.style.transform = 'scale(1.5)';
+		   this.style.background = '#fff';
+		   this.style.color = '#000';
+	   }
+	   oNext.onmouseout = function(){
+		   this.style.transform = 'scale(1)';
+		   this.style.background = '#000';
+		   this.style.color = '#fff';
+	   }
+	   oNext.onclick = function(){
+				if(!oWrap.moved){
+					return;
+				}
+				aImg[1].style.position = 'absolute';
+				aImg[1].style.top = '0';
+				aImg[1].style.left = '600px';
+
+				num++;
+				if(num == arrImg.length){
+					num = 0;
+				}
+				aImg[1].src = arrImg[num];
+				move(oWrap, 'left', -600, 20, 20, function(){
+					aImg[0].src = aImg[1].src;
+					oWrap.style.left = '0';
+					clearBullets();
+					aLi[num].style.background = '#000';
+				});
+			}
+
+			oPrev.onclick = function(){
+				if(!oWrap.moved){
+					return;
+				}
+				aImg[1].style.position = 'absolute';
+				aImg[1].style.top = '0';
+				aImg[1].style.left = '-600px';
+
+				num--;
+				if(num < 0) {
+					num = arrImg.length - 1;
+				}
+				aImg[1].src = arrImg[num];
+				move(oWrap, 'left', 600, 20, 20, function(){
+					aImg[0].src = aImg[1].src;
+					oWrap.style.left = '0';
+					clearBullets();
+					aLi[num].style.background = '#000';
+				})
+			}
+
+			function clearBullets(){
+				for(var i=0; i<aLi.length; i++){
+					aLi[i].style.background = '#fff';
+				}
+			}
+
+			for(var i=0; i<aLi.length; i++){
+				aLi[i].index = i;
+				aLi[i].onclick = function(){
+					var _index = this.index;
+					if (num == this.index) {
+						return;
+					}
+					if(num < this.index) {
+						aImg[1].style.position = 'absolute';
+						aImg[1].style.top = '0';
+						aImg[1].style.left = '600px';
+
+						aImg[1].src = arrImg[this.index];
+						move(oWrap, 'left', -600, 20, 20, function(){
+							aImg[0].src = aImg[1].src;
+							num = _index;
+							oWrap.style.left = '0';
+							clearBullets();
+							aLi[num].style.background = '#000';
+						});
+
+					}
+
+					if(num > this.index) {
+						aImg[1].style.position = 'absolute';
+						aImg[1].style.top = '0';
+						aImg[1].style.left = '-600px';
+
+						aImg[1].src = arrImg[this.index];
+						move(oWrap, 'left', 600, 20, 20, function(){
+							aImg[0].src = aImg[1].src;
+							num = _index;
+							oWrap.style.left = '0';
+							clearBullets();
+							aLi[num].style.background = '#000';
+						});
+
+					}
+
+				}
+			}
+	</script>
+</body>
+</html>

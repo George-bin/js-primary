@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	padding: 0;
+       	margin: 0;
+       }
+       body {
+       	background-color: #ddd;
+       }
+       #content {
+       	width: 900px;
+       	margin: 2em auto;
+       }
+       #content .btns {
+       	width: 900px;
+       	margin-bottom: 20px;
+       }
+       #content .left {
+       	float: left;
+       	width: 540px;
+       	height: 450px;
+       	margin-right: 20px;
+       	text-align: center;
+       	background-color: white;
+       }
+       #content .right {
+       	float: left;
+       	width: 340px;
+       	height: 450px;
+       	text-align: center;
+       	background-color: white;
+       }
+       img {
+       	margin-top: 20px;
+       	cursor: pointer;
+       }
+       #content .value {
+       	font-size: 14px;
+       }
+       #content .desc {
+       	clear: both;
+       }
+       #content .num {
+       	margin-top: 37px;
+       	text-align: left;
+       	text-indent: 20px;
+       }
+
+
+	</style>
+</head>
+<body>
+	<div id="content">
+	   <div class="btns">
+         <input id="prev" type="button" value="上一组" />
+         <input id="next" type="button" value="下一组" />
+	   </div>
+       <div class="left">
+         <img id="img1" src="images/doing.gif" alt="" />
+         <p class=" value">（点击图片切换）</p>
+         <p id="descrip1" class="desc">加载中。。。</p>
+         <p id="num1" class="num">加载中。。。</p>
+       </div>
+       <div class="right">
+         <img id="img2" src="images/doing.gif" alt="" />
+         <p class="value">（点击图片切换）</p>
+
+         <p id="descrip2" class="desc">加载中。。。</p>
+         <p id="num2" class="num">加载中。。。</p>
+       </div>
+	</div>
+
+	<script>
+       var oPrev = document.getElementById('prev');
+       var oNext = document.getElementById('next');
+       var oImg1 = document.getElementById('img1');
+       var oImg2 = document.getElementById('img2');
+       var oP1 = document.getElementById('descrip1');
+       var oP2 = document.getElementById('descrip2');
+       var oNum1 = document.getElementById('num1');
+       var oNum2 = document.getElementById('num2');
+       var arrUrl = [[['images/zu1-1.jpg','images/zu1-2.jpg','images/zu1-3.jpg','images/zu1-4.jpg'],['images/zu2-1.jpg','images/zu2-2.jpg','images/zu2-3.jpg','images/zu2-4.jpg']],[['images/zu1-21.jpg','images/zu1-22.jpg','images/zu1-23.jpg','images/zu1-24.jpg'],['images/zu2-21.jpg','images/zu2-22.jpg','images/zu2-23.jpg','images/zu2-24.jpg']],[['images/zu1-31.jpg','images/zu1-32.jpg','images/zu1-33.jpg','images/zu1-34.jpg'],['images/zu2-31.jpg','images/zu2-32.jpg','images/zu2-33.jpg','images/zu2-34.jpg']],[['images/zu1-41.jpg','images/zu1-42.jpg','images/zu1-43.jpg','images/zu1-44.jpg'],['images/zu2-41.jpg','images/zu2-42.jpg','images/zu2-43.jpg','images/zu2-44.jpg']]];
+
+       var arrP1 = ['第一组第1张图片','第一组第2张图片','第一组第3张图片','第一组第4张图片'];
+       var arrP2 = ['第二组第1张图片','第二组第2张图片','第二组第3张图片','第二组第4张图片'];
+       var num = 0;
+       var value = 1;
+       // 初始化
+       oImg1.src = arrUrl[num][num][num];
+       oImg2.src = arrUrl[num][num+1][num];
+       oP1.innerHTML = '<strong>'+arrP1[num]+'</strong>';
+       oNum1.innerHTML = 1+num+'/'+arrP1.length;
+       oP2.innerHTML = '<strong>'+arrP2[num]+'</strong>';
+       oNum2.innerHTML = 1+num+'/'+arrP1.length;
+       function fnStart() {
+           oImg1.num = 0;
+	       oImg1.onclick = function() {
+	       	 this.num++;
+	         this.src = arrUrl[num][0][this.num];
+	         oP1.innerHTML = '<strong>'+arrP1[this.num]+'</strong>';
+	         oNum1.innerHTML = 1+this.num+'/'+arrP1.length;
+	         if(this.num == arrUrl[num][0].length-1) {
+	           	this.num = -1;
+	         }
+	       }
+	       oImg2.num = 0;
+	       oImg2.onclick = function() {
+	       	this.num++;
+	       	this.src = arrUrl[num][value][this.num];
+	       	oP2.innerHTML = '<strong>'+arrP2[this.num]+'</strong>';
+	        oNum2.innerHTML = 1+this.num+'/'+arrP1.length;
+	       	if(this.num == arrUrl[num][value].length-1) {
+	       		this.num = -1;
+	       	}
+	       }
+       }
+       fnStart();
+       function fnSet() {
+   	       oImg1.src = arrUrl[num][0][0];
+       	   oImg2.src = arrUrl[num][1][0];
+       	   oP1.innerHTML = '<strong>'+arrP1[0]+'</strong>';
+       	   oNum1.innerHTML = 1+'/'+arrP1.length;
+       	   oP2.innerHTML = '<strong>'+arrP2[0]+'</strong>';
+           oNum2.innerHTML = 1+'/'+arrP1.length;
+       }
+       function fnAdd() {
+       	   oImg1.num = 0;
+	       oImg1.onclick = function() {
+	       	 this.num++;
+	         this.src = arrUrl[num][0][this.num];
+	         oP1.innerHTML = '<strong>'+arrP1[this.num]+'</strong>';
+	         oNum1.innerHTML = 1+this.num+'/'+arrP1.length;
+	         if(this.num == arrUrl[num][0].length-1) {
+	           	this.num = -1;
+	         }
+	       }
+	       oImg2.num = 0;
+	       oImg2.onclick = function() {
+	       	this.num++;
+	       	this.src = arrUrl[num][value][this.num];
+	       	oP2.innerHTML = '<strong>'+arrP2[this.num]+'</strong>';
+	        oNum2.innerHTML = 1+this.num+'/'+arrP1.length;
+	       	if(this.num == arrUrl[num][value].length-1) {
+	       		this.num = -1;
+	       	}
+	       }
+       }
+       
+       oNext.onclick = function() {
+           num++;
+           if(num == arrUrl.length) {
+           	   num = 0;
+           	   fnSet();
+           	   fnStart();
+           }else {
+           	   fnSet();
+           	   fnAdd();
+           }
+       }
+       oPrev.onclick = function() {
+       	  num--;
+       	  if(num == -1) {
+       	  	   num = arrUrl.length-1;
+       	  	   fnSet();
+       	  	   fnAdd();
+       	  }else {
+	       	   fnSet();
+	       	   fnStart();
+       	  }
+       }
+
+	</script>
+</body>
+</html>

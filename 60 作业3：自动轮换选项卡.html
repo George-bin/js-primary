@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+       * {
+       	 padding: 0;
+       	 margin: 0;
+       }
+       li { list-style: none; }
+       body {
+       	 font-size: 14px;
+       }
+       img { border: 0; }
+       .clearfix { zoom: 1; }
+       .clearfix:after {
+       	 content: "";
+       	 display: block;
+       	 clear: both;
+       	 height: 0;
+       	 line-height: 0;
+       	 visibility: hidden;
+       }
+       #wrap {
+       	 position: relative;
+       	 width: 380px;
+       	 padding: 7px;
+       	 margin: 20px auto;
+       	 border: 1px solid #ddd;
+       	 background-color: 
+       }
+       #wrap .nav {
+       	 float: left;
+         margin-bottom: 7px;
+       }
+       .nav li {
+         float: left;
+         width: 90px;
+         height: 30px;
+         line-height: 30px;
+         margin-right: 7px;
+         text-align: center;
+         background-color: #3888ff;
+       }
+       img {
+       	 display: block;
+       	 float: left;
+       }
+       .subnav {
+       	  position: absolute;
+       	  right: 10px;
+       	  top: 44px;
+       }
+       .subnav li {
+       	  width: 70px;
+       	  height: 30px;
+       	  line-height: 30px;
+       	  margin-bottom: 10px;
+       	  text-align: center;
+       	  background-color: #d0d0d0;
+       }
+	</style>
+</head>
+<body>
+	<div id="wrap" class="clearfix">
+       <ul id="nav" class="nav">
+       	<li>菜单一</li>
+       	<li>菜单二</li>
+       </ul>
+       <img src="images/tab1-1.png" alt="pic" />
+       <ul class="subnav">
+         <li>图片1</li>
+         <li>图片2</li>
+         <li>图片3</li>
+       </ul>
+       <ul class="subnav">
+         <li>图片4</li>
+         <li>图片5</li>
+         <li>图片6</li>
+       </ul>
+	</div>
+	<script type="text/javascript">
+       var oWrap = document.getElementById('wrap');
+       var arrUrl = ['images/tab1-1.png','images/tab1-2.png','images/tab1-3.png','images/tab2-1.png','images/tab2-2.png','images/tab2-3.png'];
+       var oImg = document.getElementsByTagName('img')[0];
+       var oNav = document.getElementById('nav');
+       var aUl = document.getElementsByTagName('ul');
+       var arrLi = [];
+       var num = 0;
+       var flag = 0;
+       var timer = null;
+       //取得所有分组的li
+       for(var i=1;i<aUl.length;i++) {
+       	  var aLi = aUl[i].getElementsByTagName('li');
+       	  for(var j=0;j<aLi.length;j++) {
+       	  	 arrLi.push(aLi[j]);
+       	  }
+       }
+
+       function fn() {
+       	  for(var i=0;i<arrLi.length;i++) {
+	       	  arrLi[i].style.background = '#eee';
+	       	  arrLi[i].style.color = '#000';
+	       }
+	       for(var i=0;i<aUl[0].getElementsByTagName('li').length;i++) {
+	       	  aUl[0].getElementsByTagName('li')[i].style.cssText = 'background: #3888ff;color: white';
+	       }
+       }
+       
+       timer = setInterval(function() {
+           fn();
+           arrLi[num].style.cssText = 'background: #005A63;color: #FFF';
+           oImg.src = arrUrl[num];
+           if(flag == 0) {
+               oNav.getElementsByTagName('li')[0].style.cssText = 'background: #245bb6;color: white'
+               aUl[2].style.display = 'none';
+               aUl[1].style.display = 'block';
+               num++;
+               if(num == arrUrl.length/2) {
+               	  flag = 1;
+               }
+
+           }else {
+              oNav.getElementsByTagName('li')[1].style.cssText = 'background: #245bb6;color: white';
+              aUl[1].style.display = 'none';
+              aUl[2].style.display = 'block';
+              num++;
+              if(num == arrUrl.length) {
+              	 flag = 0;
+              	 num = 0;
+              }
+           }
+       },1000);
+
+	</script>
+</body>
+</html>

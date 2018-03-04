@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	   * {
+	   	margin: 0;
+	   	padding: 0;
+	   }
+	   .img {
+	   	width: 400px;
+	   	height: 600px;
+	   }
+       #content {
+       	position: relative;
+       	width: 400px;
+       	height: 600px;
+       	border: 10px solid #ccc;
+       	margin: 0 auto;
+       }
+       #content a {
+       	position: absolute;
+       	top: 300px;
+       	width: 40px;
+       	height: 40px;
+       	line-height: 40px;
+       	border: 5px solid white;
+       	font-size: 20px;
+       	text-align: center;
+       	text-decoration: none;
+       	color: white;
+       	background: #000;
+       	opacity: 0.5;
+       	filter: alpha(opacity = 50);
+       }
+       #content a:hover {
+       	opacity: 0.7;
+       	filter: alpha(opacity = 70);
+       }
+       #prev {left: 7px;}
+       #next {right:7px;}
+       #text {
+       	position: absolute;
+       	bottom: 0;
+       	left: 0;
+       	width: 400px;
+       	height: 30px;
+       	line-height: 30px;
+       	text-align: center;
+       	color: white;
+       	background: #000;
+       	opacity: 0.6;
+       	filter: alpha(opacity = 60);
+       }
+       #span1 {
+       	position: absolute;
+       	top: 0;
+       	left: 0;
+       	width: 400px;
+       	height: 30px;
+       	line-height: 30px;
+       	text-align: center;
+       	color: white;
+       	background: #000;
+       	opacity: 0.6;
+       	filter: alpha(opacity = 60);
+       }
+       #btns {
+            width: 420px;
+            margin: 20px auto 0;
+            text-align: center;
+       }
+       #description {
+            height: 30px;
+            line-height: 30px;
+            margin-top: 10px;
+            font-size: 14px;
+            border: 2px solid #ccc;
+            border-bottom: 0;
+       }
+	</style>
+</head>
+<body>
+      <div id="btns">
+        <input id="circulation" type="button" value="循环切换" />
+        <input id="order" type="button" value="顺序切换" />
+        <p id="description">特别提示...</p>
+      </div>
+	<div id="content">
+            <a id="prev" href="javascript:;">&lt;</a>
+            <a id="next" href="javascript:;">&gt;</a>
+            <p id="text">这是第一张图片</p>
+            
+            <img id="img1" src="images/00.jpg" alt="二次元">
+            <span id="span1">数量正在计算中...</span>
+	</div>
+	<script>
+      var oCircu = document.getElementById('circulation');
+      var oOrder = document.getElementById('order');
+      var oDescrip = document.getElementById('description');
+      var oPrev = document.getElementById('prev');
+      var oNext = document.getElementById('next');
+      var oText = document.getElementById('text');
+      var oSpan = document.getElementById('span1');
+      var oImg = document.getElementById('img1');
+
+
+      var arrUrl = ['images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg'];
+      var arrText = ['二次元-文字一','二次元-文字二','二次元-文字三','二次元-文字四'];
+      var arrDescrip = ['循环切换','顺序切换'];
+      var num = 0;
+      // 初始化
+      function fnTab() {
+        oSpan.innerHTML = num + 1 +  '/'  + arrText.length;
+        oImg.src = arrUrl[num];
+        oText.innerHTML = arrText[num];
+      }
+      fnTab();
+      oDescrip.innerHTML = '模式：' + arrDescrip[0];
+      function pattern() {
+            oDescrip.innerHTML = '模式：' + arrDescrip[0];
+            oNext.onclick = function() {
+                  num++;
+                  if(num == arrText.length) {
+                       num = 0;
+                  }
+                  fnTab();
+            }
+            oPrev.onclick = function() {
+                  num--;
+                  if(num == -1) {
+                       num = arrText.length-1;
+                  }
+                  fnTab();
+            }
+      }
+      pattern();
+      
+
+      oCircu.onclick = function() {
+            oDescrip.innerHTML = arrDescrip[0];
+            pattern();
+      }
+      oOrder.onclick = function() {
+            oDescrip.innerHTML = '模式：' + arrDescrip[arrDescrip.length-1];
+            oNext.onclick = function() {
+                  num++;
+                  if(num == arrText.length) {
+                       alert('亲，这已经是最后一张啦！');
+                       num = arrText.length-1;
+                  }
+                  fnTab();
+            }
+            oPrev.onclick = function() {
+                  num--;
+                  if(num == -1) {
+                       alert('亲，前面已经没有啦！');
+                       num = 0;
+                  }
+                  fnTab();
+            }
+      }
+
+      
+	</script>
+</body>
+</html>

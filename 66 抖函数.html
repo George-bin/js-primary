@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       img {
+       	  position: absolute;
+       	  top: 200px;
+       	  left: 300px;
+       	  width: 180px;
+       }
+       .img1 {
+       	  left: 100px;
+       }
+
+	</style>
+</head>
+<body>
+	<img class="img1" src="images/bao13.png" alt="pic" />
+	<img src="images/bao3.png" alt="pic">
+	<script src="js/JS.js"></script>
+	<script>
+        var oImg = document.getElementsByTagName('img');
+        oImg[0].onclick = fnShake;
+        oImg[1].onclick = fnShake;
+
+        function fnShake(){
+        	var _this = this;
+        	shakee(_this,'left',function(){
+        		shakee(_this,'top');    //回调函数this指向window对象
+        	});
+        }
+
+        function shakee(obj,attr,endFn) {
+        	
+        	if(obj.shaked) { return; }
+        	obj.shaked = true;
+        	onOff = false;
+        	var pos = parseInt(getStyle(obj,attr));  //有隐患
+
+	        var arr = [];  // 20, -20, 18, -18 ..... 0
+	        var num = 0;
+	        var timer = null;
+	       
+
+	        for(var i=20; i>=0; i-=2) {
+	        	arr.push(i,-i);
+	        }
+
+	        clearInterval(obj.shake);
+	        obj.shake = setInterval(function(){
+	        	obj.style[attr] = pos+arr[num]+'px';
+	        	num++;
+	        	if(num === arr.length) {
+	        		clearInterval(obj.shake);
+	        		endFn && endFn();
+	        		obj.shaked = false;
+	        	}
+	        },50);
+        }
+        
+	</script>
+</body>
+</html>

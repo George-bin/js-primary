@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    * {
+      font-size: 14px;
+    }
+    #box {
+      width: 320px;
+      height: 400px;
+      /*border: 10px solid #ccc;*/
+      margin: 40px auto;
+    }
+    #div1{ 
+      width:318px; 
+      height:370px; 
+      border: 1px solid #ccc;
+      background:#fafafa; 
+      overflow:auto;
+    }
+    .btn{
+      margin-top: 7px;
+    }
+    img{ 
+      float: left;
+      width:24px;
+      height:24px;
+      margin-right: 6px;
+      cursor: pointer;
+    }
+    input {
+      cursor: pointer;
+      border: 0;
+    }
+    span {
+      float: left;
+    }
+    .span1 {
+      position: relative;
+      width: 219px;
+      height: 22px;
+      border: 1px solid #ccc;
+      border-right: 0;
+    }
+    .span1 input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 219px;
+      height: 20px;
+    }
+    .span2 input {
+      width: 70px;
+      height: 24px;
+    }
+    p{
+      position:relative; 
+      margin:0 0 5px 0; 
+      word-break:break-all; /*允许在单词内换行。*/
+      word-wrap:break-word;/* 在长单词或 URL 地址内部进行换行。*/
+      overflow:hidden;}
+    p img{ 
+      position:absolute; 
+      top:0;}
+    .left{ padding-left:30px;}
+    .right{ padding-right:30px;}
+    .left img{ left:0;}
+    .right img{ right:0;}
+    .left span{ 
+      float:left;
+      padding:5px; 
+      background:#FFC;}
+    .right span{ 
+      float:right;
+      padding:5px; 
+      background:#FCF;}
+    
+  </style>
+</head>
+<body>
+  
+  <div id="box">
+    <div id="div1">
+       <!-- <p class="left">
+          <img src="img/1.jpg">
+            <span>文字1~~~</span>
+       </p>
+        
+       <p class="right">
+          <img src="img/2.jpg">
+            <span>文字2~~~</span>
+       </p> -->
+    </div>
+    <div class="btn">
+      <img id="img" src="images/qiehuan.png" alt="icon" />
+      <span class="span1">
+        <input type="text" id="text1" />
+      </span>
+      <span class="span2">
+        <input id="btn1" type="button" value="发送" />
+      </span>
+      
+    </div>
+    
+    
+  </div>
+  
+  <script>
+    var oDiv = document.getElementById('div1');
+    var oImg = document.getElementById('img');
+    var oText = document.getElementById('text1');
+    var oBtn = document.getElementById('btn1');
+    var onOff = true;
+    // 图像切换
+    oImg.onclick = function() {
+      if(onOff) {
+        oImg.src = 'images/qiehuan2.png';
+        onOff = false;
+      }else {
+        oImg.src = 'images/qiehuan.png';
+        onOff = true;
+      }
+    }
+    //点击发送
+    oBtn.onclick = function() {
+        var posClass = 'left';
+        if(onOff) {
+          posClass = 'left';
+        }else {
+          posClass = 'right';
+        }
+        if(oText.value == '') {
+          alert('未输入任何信息！');
+        }else {
+          oDiv.innerHTML = '<p class="'+posClass+'">'+'<img src="'+oImg.src+'" />'+'<span>'+oText.value+'</span>'+'</p>'+oDiv.innerHTML;
+          oText.value = '';
+        }
+        
+    }
+    
+  </script>
+</body>
+</html>

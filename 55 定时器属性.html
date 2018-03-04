@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+        * {
+        	padding: 0;
+        	margin: 0;
+        }
+        body {
+        	background-color: #ddd;
+        }
+        #wrap {
+        	width: 540px;
+        	margin: 40px auto;
+        }
+        #wrap p {
+        	margin-bottom: 7px;
+        }
+        #wrap p input {
+        	width: 47px;
+        	height: 24px;
+        }
+        .content {
+        	width: 500px;
+        	height: 300px;
+        	border: 20px solid white;
+        	background: url('images/zu1-41.jpg');
+        }
+	</style>
+</head>
+<body>
+	<div id="wrap">
+       <p>
+         <input type="button" value="换" />
+         <input type="button" value="停" />
+         <input type="button" value="开/关" />
+       </p>
+       <div class="content"></div>
+	</div>
+	<script>
+       var oWrap = document.getElementById('wrap');
+       var aBtn = oWrap.getElementsByTagName('input');
+       var oDiv = oWrap.getElementsByTagName('div')[0];
+       var arrUrl = ['images/zu1-41.jpg','images/zu1-42.jpg','images/zu1-43.jpg','images/zu1-44.jpg'];
+       var num = 0;
+       var timer = null;
+       var onOff = true;
+       aBtn[0].onclick=function() {
+       	   clearInterval(timer);
+       	   timer = setInterval(function(){
+
+	           // if(num == arrUrl.length) {
+	           // 	  num = 0
+	           // }
+	           oDiv.style.background = 'url('+arrUrl[num]+')';
+	           num++;
+	           num %= arrUrl.length;
+	       },3000);
+       }
+       aBtn[1].onclick=function() {
+       	   clearInterval(timer);
+       }
+       aBtn[2].onclick = function() {
+       	   if(onOff) {
+	       	   timer = setInterval(function(){
+	       	   	   num++;
+		           num %= arrUrl.length;
+		           // if(num == arrUrl.length) {
+		           // 	  num = 0
+		           // }
+		           oDiv.style.background = 'url('+arrUrl[num]+')';
+		           
+		       },1000);
+		       onOff = false;
+       	   }else {
+       	   	   clearInterval(timer);
+       	   	   onOff = true;
+       	   }
+       }
+	</script>
+</body>
+</html>

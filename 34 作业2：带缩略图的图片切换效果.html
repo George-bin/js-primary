@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	margin: 0;
+       	padding: 0;
+       }
+       body{
+       	background-color: #ddd;
+       }
+       #content {
+       	position: relative;
+       	width: 420px;
+       	height: 620px;
+       	margin: 10px auto;
+       	text-align: center;
+       	background-color: white;
+       }
+       #content img {
+       	border: 10px solid white;
+       }
+       #prev,#next {
+       	position: absolute;
+       	top: 270px;
+       	width: 40px;
+       	height: 40px;
+       	line-height: 40px;
+       	border-radius: 50%;
+       	font-size: 24px;
+       	text-align: center;
+       	color: white;
+       	background-color: orange;
+       	opacity: 0.5;
+       	cursor: pointer;
+       }
+       #prev:hover,#next:hover {
+       	opacity: 0.8;
+       }
+       #prev {
+       	left: 20px;
+       }
+       #next {
+        right: 20px;
+       }
+       #dots {
+       	position: absolute;
+       	bottom: 20px;
+       	left: 180px;
+       }
+       #dots span {
+       	float: left;
+       	position: relative;
+       	width: 13px;
+       	height: 13px;
+       	margin-right: 7px;
+       	border-radius: 50%;
+       	background-color: orange;
+       	opacity: 0.6;
+       	filter: alpha(opacity=60);
+       	cursor: pointer;
+       }
+       #dots .active { opacity: 1; }
+       #dots span img {
+       	display: none;
+       	position: absolute;
+       	top: -75px;
+       	left: -3px;
+       	border: 0;
+       	opacity: 1;
+       }
+	</style>
+</head>
+<body>
+	<div id="content">
+       <img src="images/doing.gif" alt="">
+       <span id="prev"><</span>
+       <span id="next">></span>
+       <div id="dots">
+          <span>
+             <img src="images/suo1.png" alt="">
+          </span>
+          <span>
+             <img src="images/suo2.png" alt="">
+          </span>
+          <span>
+             <img src="images/suo3.png" alt="">
+          </span>
+          <span>
+             <img src="images/suo4.png" alt="">
+          </span>
+       </div>
+	</div>
+	<script>
+       var oImg = document.getElementsByTagName('img')[0];
+       var oPrev = document.getElementById('prev');
+       var oNext = document.getElementById('next');
+       var oDots = document.getElementById('dots');
+       var aSpan = oDots.getElementsByTagName('span');
+       var aImg = oDots.getElementsByTagName('img');
+       var arrUrl = ['images/01.jpg','images/02.jpg','images/03.jpg','images/04.jpg'];
+       var oldSpan = null;
+       var num = 0;
+       // 初始化
+       oImg.src = arrUrl[num];
+       oldSpan = aSpan[num];
+       oldSpan.className = 'active';
+
+       for(var i=0,len=aSpan.length;i<len;i++) {
+	       	aSpan[i].index = i;
+	       	aSpan[i].onOff = true;
+	       	aSpan[i].onclick = function() {
+	       		 oldSpan.className = '';
+	             oImg.src = arrUrl[this.index];
+	             oldSpan = this;
+	             if(this.onOff) {
+	             	this.className = 'active';
+	             }    
+	       	}
+	       	aSpan[i].onmouseover = function() {
+	       		aImg[this.index].style.display = 'block';
+	       	}
+	       	aSpan[i].onmouseout = function() {
+	       		aImg[this.index].style.display = 'none';
+	       	}
+	       	// aSpan[i].onmouseout = function() {
+	       		
+	       	// }
+
+       }
+       oPrev.onclick = function() {
+       	    for(var i=0,len=aSpan.length;i<len;i++) {
+       	    	aSpan[i].className = ''; 	
+       	    }
+	       	num--;
+	       	if(num == -1) {
+	       		num = arrUrl.length-1;
+	       	}
+	       	oImg.src = arrUrl[num];
+
+            
+            aSpan[num].className = 'active'; 		
+
+       }
+       oNext.onclick = function() {
+       	    for(var i=0,len=aSpan.length;i<len;i++) {
+       	    	aSpan[i].className = ''; 	
+       	    }
+	       	num++;
+	       	if(num == arrUrl.length) {
+	       		num = 0;
+	       	}
+	       	oImg.src = arrUrl[num];
+	       	aSpan[num].className = 'active'; 
+       }
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>通关口令：
+      <input id="text" type="text" value="" />
+      <input id="btn" type="button" value="确定" />
+	</p>
+	<script>
+       var oText = document.getElementById('text');
+       var oBtn = document.getElementById('btn');
+       oBtn.onclick = function() {
+       	if(oText.value == '') {
+       		alert('写点吧，哥们');
+       	}else if(oText.value == 'CSS'){
+       		alert('哥们你写的是'+oText.value+' ,恭喜通过！');
+       	}else if(oText.value == 'JS'){
+       		alert('哥们你写的是'+oText.value+' ,恭喜通过！');
+       	}else {
+       		alert('不好意思，您输入的东西是'+oText.value+' ,不予通过！');
+       	}
+       }
+	</script>
+</body>
+</html>

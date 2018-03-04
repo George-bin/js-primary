@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       html,body,div,h1,ul,li,span,p,img {
+           padding: 0;
+           margin: 0;
+       }
+       li { list-style: none }
+       #wrap {
+       	   width: 648px;
+       	   padding: 10px;
+       	   margin: 40px auto;
+       }
+       #wrap h1 { font-size: 14px; }
+       #wrap ul { font-size: 0; }
+       #wrap li {
+       	   position: relative;
+       	   display: inline-block;
+           width: 162px;
+           height: 279px;
+           border-top: 1px solid #A0A0A4;
+           background: url(images/download.png) no-repeat 0 0;
+       }
+       .box {
+		   position: absolute;
+		   top: 0;
+		   left: 0;
+		   width: 152px;
+		   height: 269px;
+		   padding: 5px;
+		   margin: 0 2px;
+		   background: #fff;
+	   }
+	   #showcase li:first-child .box {
+		   margin-left: 0;
+       }
+       .box img {
+		   width: 100px;
+		   height: 80px;
+		   margin: 20px;
+	   }
+	   .box input[type="text"] {
+		   width: 106px;
+		   height: 16px;
+		   padding: 2px;
+		   border: 1px solid #EFEFEF;
+		   font-size: 12px;
+		   color: #522121;
+		   background: #DED6E7;	
+	   }
+	   .box input[type="button"] {
+	   	   width: 36px;
+	   	   border: none;
+	   	   font-size: 14px;
+		   font-weight: bold;
+		   color: #847373;
+		   background: #fff;	
+	   }
+	   .box .timeoff {
+	   	   font-size: 14px;
+	   	   text-align: center;
+	   	   color: #A0A0A4;
+	   }
+	   .box p {
+	   	   font-size: 14px;
+	   	   margin-top: 17px;
+	   }
+	   .box span {
+	   	   font-weight: bold;
+	   	   color: #BDADBD;
+	   }
+	   .box .price {
+	   	   font-weight: bold;
+	   	   color: #BD214A;
+	   }
+	   table {
+	   	   width: 648px;
+	   	   margin-top: 30px;
+	   	   border-collapse: collapse;
+	   	   font-size: 14px;
+	   	   font-weight: bold;
+	   	   text-align: center;
+	   	   color: #522121;
+	   	   background: #DED6E7;
+	   }
+	   td {
+	   	   padding: 10px 0;
+	   	   border-top: 4px solid #FFF;
+	   	   border-bottom: 4px solid #FFF;
+	   }
+	   td img {
+	   	   width: 80px;
+	   	   height: 51px;
+	   	   margin-left: 120px;
+	   	   border: 1px solid #8C4A4A;
+	   }
+	   tbody tr td:first-child {
+		   width: 180px;
+		   padding: 0 10px;
+		   font-weight: normal;
+		   color: #000;
+	   }
+	   tbody p {   /*有用*/
+		   width: 180px;
+		   overflow: hidden;
+		   text-overflow: ellipsis;
+		   white-space: nowrap;
+	   }
+	   #total {
+			font-weight: bold;
+			font-size: 20px;
+		}
+		#total .all {
+			color: #BD214A;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+        <h1>限时抢购</h1>
+        <ul id="showcase">
+        	<li>
+                <div class="box">
+                    <input type="text" value="January 3, 2018 18:00:00" />
+                    <input type="button" value="购物" />
+                    <p class="timeoff">剩余00天00时00分00秒</p>
+                    <img src="images/ad1.png" alt="commodity" />
+                    <p>疯狂599，美的爆款隐藏式面板下拉门微波炉</p>
+                    <p>
+                        <span>抢购价：</span>
+                        <span class="price">￥</span>
+                        <span class="price">599.00</span>
+                    </p>
+                </div>
+        	</li>
+        	<li>
+                <div class="box">
+                    <input type="text" value="January 3, 2018 18:00:00" />
+                    <input type="button" value="购物" />
+                    <p class="timeoff">剩余00天00时00分00秒</p>
+                    <img src="images/ad2.png" alt="commodity" />
+                    <p>疯狂3299，美的爆款隐藏式面板下拉门微波炉</p>
+                    <p>
+                        <span>抢购价：</span>
+                        <span class="price">￥</span>
+                        <span class="price">3299.00</span>
+                    </p>
+                </div>
+        	</li>
+        	<li>
+                <div class="box">
+                    <input type="text" value="January 3, 2018 18:00:00" />
+                    <input type="button" value="购物" />
+                    <p class="timeoff">剩余00天00时00分00秒</p>
+                    <img src="images/ad3.png" alt="commodity" />
+                    <p>疯狂1块钱，美的爆款隐藏式面板下拉门微波炉</p>
+                    <p>
+                        <span>抢购价：</span>
+                        <span class="price">￥</span>
+                        <span class="price">1.00</span>
+                    </p>
+                </div>
+        	</li>
+        	<li>
+                <div class="box">
+                    <input type="text" value="January 3, 2018 18:00:00" />
+                    <input type="button" value="购物" />
+                    <p class="timeoff">剩余00天00时00分00秒</p>
+                    <img src="images/ad4.png" alt="commodity" />
+                    <p>疯狂168，美的爆款隐藏式面板下拉门微波炉</p>
+                    <p>
+                        <span>抢购价：</span>
+                        <span class="price">￥</span>
+                        <span class="price">168.00</span>
+                    </p>
+                </div>
+        	</li>
+        </ul>
+        <table>
+            <thead>
+                <tr>
+	                <td>商品名称</td>
+	                <td>价钱</td>
+	                <td></td>
+	            </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>
+                        <p>疯狂599，美的爆款隐藏式面板下拉门微波炉</p>
+                    </td>
+                    <td>599.00</td>
+                    <td><img src="images/ad4.png" /></td>
+                </tr> -->
+            </tbody>
+            
+        </table>
+        <p id="total">
+			总价：<span class="all">0</span>元
+		</p>
+	</div>
+	<script>
+        var oUl = document.getElementById('showcase'),
+            aBox = oUl.getElementsByTagName('div'),
+            oTbody = document.getElementsByTagName('tbody')[0],
+            oTotal = document.getElementById('total').getElementsByTagName('span')[0];
+
+        //实现函数
+        function timeOff(box) {
+        	var oBtn = box.getElementsByTagName('input')[1];
+
+        	oBtn.onclick = function() {
+        		var iNew = new Date(box.getElementsByTagName('input')[0].value),
+        		    oP = box.getElementsByTagName('p')[0],
+        		    oP2 = box.getElementsByTagName('p')[1],
+        		    price = box.getElementsByTagName('span')[2].innerHTML,
+        		    oImg = box.getElementsByTagName('img')[0];
+
+        		clearInterval(box.timer);
+
+        		box.timer = setInterval(function() {
+
+        			var iNow = new Date(),
+        			    t = Math.floor((iNew - iNow)/1000);
+                    
+                    if(t >= 0) {
+
+                    	oP.innerHTML = '剩余' + Math.floor(t/86400) + '天' + Math.floor(t%86400/3600) + '时' + Math.floor(t/86400%3600/60) + '分' + t%60 + '秒';
+
+                    }else {
+
+                    	clearInterval(box.timer);
+
+                    	shake(box, 'left', function() {
+
+                    		doMove(box, 'top', 10, 279);
+
+                    		opacity(box, 10, 0, 30, function() {
+
+                    			box.style.display = 'none';
+
+                    			oTbody.innerHTML += '<tr><td><p>' + oP2.innerHTML + '</p></td><td>' + price + '</td><td><img src="'+ oImg.src +'" /></td></tr>';
+
+                    			oTotal.innerHTML = parseFloat(oTotal.innerHTML) + parseFloat(price); 
+                    		})
+                    	})
+                    }
+
+        		},1000)
+
+        	}
+
+        }
+        for(var i = 0; i < aBox.length; i++) {
+        	timeOff(aBox[i]);
+        }
+
+        function getStyle(obj, attr) {
+
+            return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+
+        }
+        //抖函数
+        function shake(obj, attr, endFn) {
+
+        	var pos = parseInt(getStyle(obj, attr)),
+
+        	    arr = [],  //10, -10, 8, -8, 6, -6, 4, -4, 2, -2, 0
+
+        	    num = 0;
+
+        	for(var i = 10; i > 0; i -= 2) {
+
+        		arr.push(i, -i);
+
+        	}
+
+        	arr.push(0);
+
+        	clearInterval(obj.shake);
+
+        	obj.shake = setInterval(function() {
+
+        		obj.style[attr] = pos + arr[num] + 'px';
+
+        		num++;
+
+        		if(num === arr.length) {
+
+        			clearInterval(obj.shake);
+
+        			endFn && endFn();
+        		}
+        	},50)
+        }
+
+        //运动函数
+        function doMove(obj, attr, dir, target, endFn) {
+
+        	dir = parseInt(getStyle(obj, attr)) < target ? dir : -dir;
+
+        	clearInterval(obj.timer);
+
+        	obj.timer = setInterval(function() {
+
+        		var speed = parseInt(getStyle(obj, attr)) + dir; //步长
+
+        		if(speed > target && dir > 0 || speed < target && dir < 0) {
+
+        			speed = target;
+
+        		}
+
+        		obj.style[attr] = speed + 'px';
+
+        		if(speed == target) {
+
+        			clearInterval(obj.timer);
+
+        			endFn && endFn();
+
+        		}
+        	},30);
+        }
+
+        //透明运动函数
+        function opacity(obj, step, target, speed, endFn) {
+
+        	var currentOpacity = getStyle(obj, 'opacity') * 100;
+
+        	step = currentOpacity < target ? step : -step;
+
+        	clearInterval(obj.alpha);
+
+        	obj.alpha = setInterval(function() {
+
+        		currentOpacity = getStyle(obj, 'opacity') * 100;
+                
+                var nextOpacity = currentOpacity + step;
+
+                if(step > 0 && nextOpacity > target || step < 0 && nextOpacity < target) {
+
+                	nextOpacity = target;
+
+                }
+                obj.style.opacity = nextOpacity/100;
+                obj.style.filter = 'alpha(opacity:'+ nextOpacity +')';
+
+                if(nextOpacity == target) {
+                	clearInterval(obj.alpha);
+                	endFn && endFn();
+                }
+        	},speed);
+        }
+	</script>
+</body>
+</html>

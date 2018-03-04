@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	  padding: 0;
+       	  margin: 0;
+       }
+       li { list-style: none; }
+       body { font-size: 14px; }
+       a {
+       	  text-decoration: none;
+       	  color: #000;
+       }
+       .clearfix { zoom: 1; }
+       .clearfix:after {
+       	  content: "";
+       	  display: block;
+       	  clear: both;
+       	  height: 0;
+       	  line-height: 0;
+       	  visibility: hidden;
+       }
+       #wrap {
+       	  width: 374px;
+       	  margin: 20px auto;
+       	  border: 1px solid orange;
+       	  padding: 7px;
+       }
+       #wrap ul {
+       	  float: left;
+       	  border: 1px solid orange;
+       }
+       #wrap ul li {
+       	  width: 58px;
+       	  height: 29px;
+       	  line-height: 30px;
+       	  text-align: center;
+       }
+       #wrap ul li+li {
+       	  border-top: 1px solid orange;
+       }
+       #wrap img {
+       	  float: left;
+       	  margin-left: 7px;
+       	  margin-right: 7px;
+       }
+	</style>
+</head>
+<body>
+	<div id="wrap" class="clearfix">
+       <ul class="left">
+       	<li><a href="#">连衣裙</a></li>
+       	<li><a href="#">雪纺</a></li>
+       	<li><a href="#">T恤</a></li>
+       	<li><a href="#">铅笔裤</a></li>
+       	<li><a href="#">婚纱</a></li>
+       	<li><a href="#">外套</a></li>
+       	<li><a href="#">连体裤</a></li>
+       </ul>
+       <img src="images/bao1.png" alt="">
+       <ul class="right">
+       	<li><a href="#">包包</a></li>
+       	<li><a href="#">凉鞋</a></li>
+       	<li><a href="#">单鞋</a></li>
+       	<li><a href="#">太阳镜</a></li>
+       	<li><a href="#">丝袜</a></li>
+       	<li><a href="#">帆布鞋</a></li>
+       	<li><a href="#">情侣装</a></li>
+       </ul>
+	</div>
+	<script type="text/javascript" src="js/JS.js"></script>
+	<!-- <script>
+		window.onload = function(){
+			var oImg = document.getElementsByTagName('img')[0],
+				aLi = document.getElementsByTagName('li'),
+				timer = null,
+				img = ['images/bao1.png','images/bao2.png','images/bao3.png','images/bao4.png','images/bao5.png','images/bao6.png','images/bao7.png','images/bao8.png','images/bao9.png','images/bao10.png','images/bao11.png','images/bao12.png','images/bao13.png','images/bao14.png'],
+				num = 0,
+				flag = 0;
+
+			function clearAll(){
+				for(var i=0; i<aLi.length; i++){
+					aLi[i].style.background = '#fff';
+					aLi[i].getElementsByTagName('a')[0].style.color = '#000';
+				}
+			}
+
+			for(var i=0; i<aLi.length; i++){
+				aLi[i].index = i;
+				aLi[i].onmouseout = function(){
+					this.style.background = '#FFF';
+					this.getElementsByTagName('a')[0].style.color = '#000';
+					timer = setInterval(autoplay, 1000);
+				}
+				aLi[i].onmouseover = function(){
+					clearInterval(timer);
+					clearAll();
+					this.style.background = '#FF4A6B';
+					this.getElementsByTagName('a')[0].style.color = '#fff';
+					oImg.src = img[this.index];
+				}
+			}
+
+			function autoplay(){
+				clearAll();
+
+				aLi[num].style.background = '#FF4A6B';
+				aLi[num].getElementsByTagName('a')[0].style.color = '#fff';
+				oImg.src = img[num];
+
+				if(num<aLi.length/2){
+					num++;
+					if (num == aLi.length/2) {
+						num = aLi.length - 1;
+					}
+				} else {
+					num--;
+					if (num == aLi.length/2 - 1) {
+						num = 0;
+					}
+				}
+			}
+
+			timer = setInterval(autoplay, 1000);
+			
+		}
+	</script> -->
+	<script>
+	    var oWrap = document.getElementById('wrap');
+        var arrUrl = ['images/bao1.png','images/bao2.png','images/bao3.png','images/bao4.png','images/bao5.png','images/bao6.png','images/bao7.png','images/bao8.png','images/bao9.png','images/bao10.png','images/bao11.png','images/bao12.png','images/bao13.png','images/bao14.png'];
+        var oImg = oWrap.getElementsByTagName('img')[0];
+        var aLi = oWrap.getElementsByTagName('li');
+        var timer = null;
+        var num = 0;
+        function clearAll() {
+        	for(var i=0;i<aLi.length;i++) {
+        		aLi[i].style.background = '#fff';
+        		aLi[i].getElementsByTagName('a')[0].style.color = '#000';
+        	}
+        }
+        // 鼠标移入移出效果
+        for(var i=0;i<aLi.length;i++) {
+        	aLi[i].index = i;
+        	aLi[i].onmouseover = function() {
+        		clearInterval(timer);
+        		clearAll();
+        		this.style.backgroundColor = 'orange';
+        		this.getElementsByTagName('a')[0].style.color = '#fff';
+        		oImg.src = arrUrl[this.index]; 
+        	}
+        	aLi[i].onmouseout = function(){
+				this.style.background = '#FFF';
+				this.getElementsByTagName('a')[0].style.color = '#000';
+				timer = setInterval(autoplay, 1000);
+			}
+        	
+        }
+        //自动轮播函数
+        function autoplay() {
+        	clearAll();
+        	aLi[num].style.background = 'orange';
+        	aLi[num].getElementsByTagName('a')[0].style.color = '#fff';
+        	oImg.src = arrUrl[num];
+        	if(num<aLi.length/2) {
+        		num++;
+        		if(num == aLi.length/2) {
+        			num = aLi.length-1;
+        		}
+        	}else {
+        		num--;
+        		if(num == aLi.length/2-1) {
+        			num = 0;
+        		}
+        	}
+
+        }
+        timer = setInterval(autoplay,1000);
+	</script>
+</body>
+</html>

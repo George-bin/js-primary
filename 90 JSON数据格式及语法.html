@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+        //var arrUrl = ['images/1.png', 'images/2.png', 'images/3.png', 'images/4.png']; 
+        //var arrTxt = ['小宠物', '图片二', '图片三', '面具'];
+
+        //json
+        var imgData = {
+
+        	url: ['images/1.png', 'images/2.png', 'images/3.png', 'images/4.png'],
+
+        	txt: ['小宠物', '图片二', '图片三', '面具']
+        }
+        // alert(imgData.url[2]);
+        
+        //var json2 = { name: 'miaov' };  //安全性差一些
+
+        var json3 = { 'name': 'miaov' };  //安全格式
+
+        // alert(json3.name);
+        // alert(json3['name']);
+        
+        var arr = [{'name':'TM', 'age':23}, {'name':'george', 'age':22}];
+
+        alert(arr[1].name + '    今年有    ' + arr[1]['age']);
+	</script>
+</body>
+</html>

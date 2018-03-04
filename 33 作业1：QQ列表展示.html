@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       ul,h2 {
+       	margin: 0;
+       	padding: 0;
+       }
+       li {
+       	list-style: none;
+       }
+       #list {
+       	width: 240px;
+       	margin: 0 auto;
+       	border: 1px solid #333;
+       	
+       }
+       #list h2 {
+       	height: 30px;
+       	line-height: 30px;
+       	font-size: 18px;
+       	text-indent: 20px;
+       	color: white;
+       	background: #3385ff url('images/ico1.gif') no-repeat 5px center;
+       	cursor: pointer;
+       }
+       #list .active { background: #2d78f4 url('images/ico2.gif') no-repeat 5px center }
+       #list ul { display: none; }
+       #list ul li {
+       	height: 24px;
+       	line-height: 24px;
+       	text-indent: 24px;
+       	border-bottom: 1px solid #333; 
+        cursor: pointer;
+       }
+       #list ul .bd-none { border-bottom: 0; }
+       #list ul .hover { background-color: #a9cbff; color:red;}
+	</style>
+</head>
+<body>
+	<ul id="list">
+		<li class="lis">
+          <h2>我的好友</h2>
+          <ul>
+          	<li>张三</li>
+          	<li>张三</li>
+          	<li>张三</li>
+          	<li>张三</li>
+          </ul>
+		</li>
+		<li class="lis">
+          <h2>企业好友</h2>
+          <ul>
+          	<li>李四</li>
+          	<li>李四</li>
+          	<li>李四</li>
+          	<li>李四</li>
+          </ul>
+		</li>
+		<li class="lis">
+          <h2>陌生人</h2>
+          <ul>
+          	<li>王五</li>
+          	<li>王五</li>
+          	<li>王五</li>
+          	<li>王五</li>
+          </ul>
+		</li>
+		<li class="lis">
+          <h2>黑名单</h2>
+          <ul>
+          	<li>马六</li>
+          	<li>马六</li>
+          	<li>马六</li>
+          	<li class="bd-none">马六</li>
+          </ul>
+		</li>
+	</ul>
+	<script>
+       var oList = document.getElementById('list');
+       var aH2 = oList.getElementsByTagName('h2');
+       var aUl = oList.getElementsByTagName('ul');
+       var aLi = null;
+       var arrLi = [];
+       var oldH2 = aH2[0];
+       
+       for(var i=0,len=aH2.length;i<len;i++) {
+         	aH2[i].onOff = true;
+         	aH2[i].index = i;
+         	aH2[i].onclick = function() {
+              oldH2.className = '';
+              aUl[oldH2.index].style.display = 'none';
+              if(oldH2.index != this.index) {
+                oldH2.onOff = true;
+              }
+              oldH2 = this;
+              if(this.onOff) {
+                this.className = 'active';
+                aUl[this.index].style.display = 'block';
+                this.onOff = false;
+              }else {
+                this.className = '';
+                aUl[this.index].style.display = 'none';
+                this.onOff = true;
+              }  
+         	};
+       }
+       for(var i=0,len=aUl.length;i<len;i++) {
+          aLi = aUl[i].getElementsByTagName('li');
+          for(var j=0;j<aLi.length;j++) {
+              arrLi.push( aLi[j] );
+          }
+       }
+       var oldLi = arrLi[0];
+       
+       for(var i=0,len=arrLi.length;i<len;i++) {
+          arrLi[i].onOff = true;
+          arrLi[i].index = i;
+          arrLi[i].onclick = function() {
+              oldLi.className = '';
+              oldLi.onOff = true;
+              if(oldLi.index != this.index) {
+                oldLi.onOff = true;
+              }
+              oldLi = this;
+              if (this.onOff) {
+                this.className = 'hover';
+                this.onOff = false;
+              }
+              else {
+                this.className = '';
+                this.onOff = true;
+              }
+          }
+       }
+	</script>
+</body>
+</html>

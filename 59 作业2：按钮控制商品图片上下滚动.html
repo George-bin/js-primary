@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+       * {
+       	 padding: 0;
+       	 margin: 0;
+       }
+       li { list-style: none; }
+       body {
+       	 font-size: 14px;
+       }
+       .clearfix { zoom: 1; }
+       .clearfix:after {
+       	 content: "";
+       	 display: block;
+       	 clear: both;
+       	 height: 0;
+       	 line-height: 0;
+       	 visibility: hidden;
+       }
+       #wrap {
+       	 width: 270px;
+       	 margin: 40px auto;
+       }
+       .title {
+       	 height: 35px;
+       	 line-height: 35px;
+       	 border-top-left-radius: 7px;
+       	 border-top-right-radius: 7px;
+       	 background-color: #2a5fad;
+       }
+       .title h2 {
+       	 float: left;
+       	 font-size: 16px;
+       	 text-indent: 17px;
+       	 color: white;
+       }
+       .title a {
+       	 float: right;
+       	 margin-right: 7px;
+       	 color: white;
+       	 text-decoration: none;
+       }
+       .content {
+       	 position: relative;
+       	 width: 268px;
+       	 height: 500px;
+       	 border-left: 1px solid #ddd;
+       	 border-right: 1px solid #ddd;
+       	 overflow: hidden;
+       }
+       .content ul {
+       	 position: relative;
+       	 top: 27px;
+       	 padding: 0 7px;
+       }
+       .content li {
+       	 padding: 7px 0;
+       }
+       .content li+li {
+       	 border-top: 1px solid #ddd;
+       }
+       .content li h3 {
+       	 font-size: 14px;
+       }
+       .content li img {
+       	 float: right;
+       	 width: 120px;
+       	 height: 100px;
+       }
+       .content li p {
+       	 float: left;
+       	 width: 120px;
+       }
+       #up,#down {
+       	 position: absolute;;
+       	 width: 100%;
+       	 height: 27px;
+       	 cursor: pointer;
+       	 z-index: 1;
+       }
+       #up {
+         top: 0;
+         background: #EFEFE7 url('images/up.png') no-repeat center center;
+       }
+       #down {
+       	 bottom: 0;
+         background: #EFEFE7 url('images/down.png') no-repeat center center;
+         border-bottom: 2px solid gray;
+       }
+       #up:hover,#down:hover {
+       	 background-color: #E7EFEF;
+       }
+	</style>
+</head>
+<body>
+	<div id="wrap">
+       <div class="title">
+       	 <h2>妙味课堂</h2>
+       	 <a href="#">更多</a>
+       </div>
+       <div class="content">
+           <div id="up"></div>
+	       <ul>
+		       	<li class="clearfix">
+		       		<h3>标题一</h3>
+		            <img src="images/mini1.png" alt="pic">
+		            <p>描述一：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+		       	<li class="clearfix">
+		       		<h3>标题二</h3>
+		            <img src="images/mini2.png" alt="pic">
+		            <p>描述二：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+		       	<li class="clearfix">
+		       		<h3>标题三</h3>
+		            <img src="images/mini3.png" alt="pic">
+		            <p>描述三：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+		       	<li class="clearfix">
+		       		<h3>标题四</h3>
+		            <img src="images/mini4.png" alt="pic">
+		            <p>描述四：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+		       	<li class="clearfix">
+		       		<h3>标题五</h3>
+		            <img src="images/mini5.png" alt="pic">
+		            <p>描述五：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+		       	<li class="clearfix">
+		       		<h3>标题六</h3>
+		            <img src="images/mini6.png" alt="pic">
+		            <p>描述六：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+		       	<li class="clearfix">
+		       		<h3>标题七</h3>
+		            <img src="images/mini7.png" alt="pic">
+		            <p>描述七：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+		       	<li class="clearfix">
+		       		<h3>标题八</h3>
+		            <img src="images/mini8.png" alt="pic">
+		            <p>描述八：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+		       	<li class="clearfix">
+		       		<h3>标题九</h3>
+		            <img src="images/mini9.png" alt="pic">
+		            <p>描述九：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+		       	<li class="clearfix">
+		       		<h3>标题十</h3>
+		            <img src="images/mini10.png" alt="pic">
+		            <p>描述十：啦啦啦啦啦啦啦啦啦~~~</p>
+		       	</li>
+	       </ul>
+	       <div id="down"></div>
+       </div>
+	</div>
+	<script type="text/javascript" src="js/JS.js"></script>
+	<script type="text/javascript">
+       var oWrap = document.getElementById('wrap');
+       var oUp = document.getElementById('up');
+       var oDown = document.getElementById('down');
+       var oUl = oWrap.getElementsByTagName('ul')[0];
+       var timer;
+       //向上滑动
+       oUp.onmousedown = function() {
+           timer = setInterval(function() {
+           	  if(parseInt(getStyle(oUl,'top'))>-880) {
+                   oUl.style.top = parseInt(getStyle(oUl,'top'))-10+'px';
+           	  }else {
+           	  	   oUl.style.top = '-880px';
+           	  }
+           },100);
+       }
+       oUp.onmouseup = function() {
+       	   clearInterval(timer);
+       }
+       //
+       oDown.onmousedown = function() {
+           timer = setInterval(function() {
+           	  if(parseInt(getStyle(oUl,'top'))<25) {
+                   oUl.style.top = parseInt(getStyle(oUl,'top'))+10+'px';
+           	  }else {
+           	  	   oUl.style.top = 25;
+           	  }
+           },100);
+       }
+       oDown.onmouseup = function() {
+       	   clearInterval(timer);
+       }
+	</script>
+</body>
+</html>
